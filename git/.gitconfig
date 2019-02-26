@@ -1,6 +1,7 @@
 [user]
 	name = Zach Harris
 	email = z@zharr.is
+	username = zacaytion
 [credential]
 	helper = osxkeychain
 [init]
@@ -12,3 +13,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[color]
+	ui = auto
