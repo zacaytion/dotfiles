@@ -1,0 +1,7 @@
+[submodule "spacemacs"]
+	path = emacs/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs.git
+	branch = develop
+[submodule "prezto"]
+	path = zsh/.zprezto
+	url = https://github.com/sorin-ionescu/prezto.git

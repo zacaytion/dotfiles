@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='emacs'
+export VISUAL='emacs'
 export PAGER='less'
 
 #
@@ -43,8 +43,9 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  /usr/local/opt/textinfo/bin
   /usr/local/{bin,sbin}
-  /usr/local/mongodb
+  $HOME/.cargo/bin
   $path
 )
 
@@ -63,18 +64,5 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-#
-# Temporary Files
-#
-
-if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="/tmp/$LOGNAME"
-  mkdir -p -m 700 "$TMPDIR"
-fi
-
-TMPPREFIX="${TMPDIR%/}/zsh"
-
-export PATH="$PATH:/usr/local/bin/elixir"
-export PATH="$PATH:/usr/local/bin/erl"
 export PATH="$HOME/.cargo/bin:$PATH"
-ctags=/usr/local/bin/ctags
+export NVM_DIR=~/.nvm
