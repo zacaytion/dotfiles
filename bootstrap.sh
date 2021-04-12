@@ -58,6 +58,7 @@ bootstrap() {
 		osx_vers=$(sw_vers -productVersion | awk -F "." '{print $2}')
 
 		puts "Checking OSX Version"
+		## FIXME
 		if [ "$osx_vers" -lt 9 ]; then
 			abort "Error: OSX ${osx_vers} not supported."
 		fi
