@@ -1,0 +1,92 @@
+tap "homebrew/core"
+tap "homebrew/cask"
+tap "homebrew/bundle"
+tap "buo/cask-upgrade"
+tap "homebrew/services"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+
+# Collection of tools that nobody wrote when UNIX was young
+brew "moreutils"
+
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+
+# Internet file retriever
+brew "wget"
+
+# Automatic configure script builder
+brew "autoconf"
+
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+
+# Library for command-line editing
+brew "readline"
+
+# General-purpose data compression with high compression ratio
+brew "xz"
+
+# Core application library for C
+brew "glib"
+
+# Manage compile and link flags for libraries
+brew "pkg-config"
+
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
+
+# Cross-platform make
+brew "cmake"
+
+# Reimplementation of ctags(1)
+brew "ctags"
+
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+
+# Simple, modern, secure file encryption
+brew "age"
+
+# Message bus system, providing inter-application communication
+brew "dbus", restart_service: true
+
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+
+# Security and system auditing tool to harden systems
+brew "lynis"
+
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
+
+# Official documentation format of the GNU project
+brew "texinfo"
+
+# Simplified and community-driven man pages
+brew "tldr"

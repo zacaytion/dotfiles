@@ -1,0 +1,14 @@
+# Spell checker with better logic than ispell
+brew "aspell"
+
+# Spell checker and morphological analyzer
+brew "hunspell"
+
+# International Ispell
+brew "ispell"
+
+# Style and grammar checker
+brew "languagetool"
+
+# Lexical database for the English language
+brew "wordnet"

@@ -1,0 +1,2 @@
+# Utility for customizing which browser to start
+cask "finicky"

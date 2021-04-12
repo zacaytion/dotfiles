@@ -1,0 +1,8 @@
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+
+# Library access to GnuPG
+brew "gpgme"

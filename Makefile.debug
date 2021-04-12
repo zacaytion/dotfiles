@@ -1,0 +1,10 @@
+ifeq ($(MAKEFILE_INCLUDED),)
+-include Makefile
+MAKEFILE_INCLUDED := y
+endif
+
+REPL_COMMAND := $(shell read line; printf "%s\n" $$line)
+
+$(eval $(REPL_COMMAND))
+
+-include Makefile.debug

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/zah/.config/pgcli'
+let g:netrw_dirhist_2='/Users/zah/Projects/ProbableFutures/monorepo/packages/mediawiki'
+let g:netrw_dirhist_1='/Users/zah/.zprezto/modules/homebrew'
+let g:netrw_dirhist_0='/Users/zah/.zprezto/modules'
+let g:netrw_dirhist_9='/Users/zah/.zprezto'
+let g:netrw_dirhist_8='/Users/zah/.zprezto/modules/homebrew'
+let g:netrw_dirhist_7='/Users/zah/.zprezto/modules'
+let g:netrw_dirhist_6='/Users/zah/.zprezto'
+let g:netrw_dirhist_5='/Users/zah/.doom-emacs/.local'
+let g:netrw_dirhist_4='/Users/zah/.doom-emacs'

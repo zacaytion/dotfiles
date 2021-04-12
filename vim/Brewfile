@@ -1,0 +1,2 @@
+# Vi 'workalike' with many additional features
+brew "vim"

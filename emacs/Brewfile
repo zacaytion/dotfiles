@@ -1,0 +1,47 @@
+tap "d12frosted/emacs-plus"
+tap "railwaycat/emacsmacport"
+
+# Graphics library to dynamically manipulate images
+brew "gd"
+
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
+
+# Command-driven, interactive function plotting
+brew "gnuplot"
+
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+
+# GitHub Markdown previewer
+brew "grip"
+
+# Library to render SVG files using Cairo
+brew "librsvg"
+
+# C library SSHv1/SSHv2 client and server protocols
+brew "libssh"
+
+# C99 library which implements a VT220 or xterm terminal emulator
+brew "libvterm"
+
+# XML security library
+brew "libxmlsec1"
+
+# GNOME XML library
+brew "libxml2"
+
+# Swiss Army knife of email handling
+brew "mailutils"
+
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+
+# Paste PNG into files
+brew "pngpaste"
+
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+
+# YAMAMOTO Mitsuharu's Mac port of GNU Emacs
+brew "railwaycat/emacsmacport/emacs-mac", args: ["with-dbus", "with-glib", "with-imagemagick", "with-no-title-bars", "with-rsvg", "with-starter"]
