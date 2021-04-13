@@ -49,10 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! benchmark-init)
-
-(disable-packages! spell-fu)
-
 (package! magit-delta
   :recipe (:host github :repo "dandavison/magit-delta"))
 
@@ -64,8 +60,7 @@
 (package! doct
   :recipe (:host github :repo "progfolio/doct"))
 
-(package! olivetti)
-(package! org-roam-bibtex)
 (package! org-ref)
+(package! org-roam-bibtex)
 (package! beacon
-  :recipe (:host github :repo "Malabarba/beacon" :files ("*.el")))
+  :reciepe (:host github :repo "Malabarba/beacon" :files ("*.el")))
