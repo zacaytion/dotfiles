@@ -1,0 +1,74 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+. $(brew --prefix asdf)/asdf.sh
+
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook zsh)"
+
+# fnm
+# export PATH=/Users/zah/.fnm/current/bin:$PATH
+# eval "$(fnm env)"
+# export FNM_MULTISHELL_PATH=/Users/zah/.fnm/current
+# export FNM_DIR=/Users/zah/.fnm/
+# export FNM_NODE_DIST_MIRROR=https://nodejs.org/dist
+# export FNM_LOGLEVEL=info
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+
+
+alias tf="terraform"
+alias tfi="terraform init"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tfv="terraform validate"
+alias tff="terraform fmt"
+alias tfw="terraform fmt -write=true"
+
+alias dcc='docker system prune --al --force --volumes'
+alias dcc-af='docker container stop $(docker container ls -a -q) && docker system prune -a -f --volumes'
+
+# Emacs vTerm Integration
+function vterm_printf(){
+    if [ -n "$TMUX" ]; then
+        # Tell tmux to pass the escape sequences through
+        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+
+# Clearback support
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
+
+# Directory tracking and Prompt tracking
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+
+
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
+
+
+eval "$(starship init zsh)"
