@@ -1,6 +1,0 @@
-# CLI for Postgres with auto-completion and syntax highlighting
-brew "pgcli"
-
-tap "sqitchers/sqitch"
-
-brew "sqitchers/sqitch/sqitch", args: ["with-postgres-support", "with-sqlite-support"]

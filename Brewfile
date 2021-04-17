@@ -1,4 +1,3 @@
-tap "cjbassi/gotop"
 tap "d12frosted/emacs-plus"
 tap "filippo.io/age", "https://filippo.io/age"
 tap "homebrew/bundle"
@@ -10,28 +9,21 @@ tap "homebrew/services"
 tap "muesli/tap"
 tap "railwaycat/emacsmacport"
 tap "schniz/tap"
+tap "sqitchers/sqitch"
 # Simple, modern, secure file encryption
 brew "age"
-# Automatic configure script builder
-brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Library for command-line editing
-brew "readline"
-# General-purpose data compression with high compression ratio
-brew "xz"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Spell checker with better logic than ispell
+brew "aspell"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Core application library for C
-brew "glib"
-# Manage compile and link flags for libraries
-brew "pkg-config"
-# Manage your dotfiles across multiple diverse machines, securely
-brew "chezmoi"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
@@ -52,34 +44,14 @@ brew "entr"
 brew "exercism"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Generate introspection data for GObject libraries
-brew "gobject-introspection"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Graphics library to dynamically manipulate images
-brew "gd"
-# Network authentication protocol
-brew "krb5"
-# GNOME XML library
-brew "libxml2"
-# Postgres C API library
-brew "libpq"
-# Libraries for security-enabled client and server applications
-brew "nss"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Geospatial Data Abstraction Library
 brew "gdal"
-# Toolkit for image loading and pixel buffer manipulation
-brew "gdk-pixbuf"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -90,28 +62,22 @@ brew "git-lfs"
 brew "gnupg"
 # Library access to GnuPG
 brew "gpgme"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
 # Command-driven, interactive function plotting
 brew "gnuplot"
-# Library to render SVG files using Cairo
-brew "librsvg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # GitHub Markdown previewer
 brew "grip"
-# Make JSON greppable
-brew "gron"
 # Improved top (interactive process viewer)
 brew "htop"
-# Add GitHub support to git on the command-line
-brew "hub"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick@6"
+# Spell checker and morphological analyzer
+brew "hunspell"
+# International Ispell
+brew "ispell"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Style and grammar checker
+brew "languagetool"
 # C library SSHv1/SSHv2 client and server protocols
 brew "libssh"
 # C99 library which implements a VT220 or xterm terminal emulator
@@ -120,14 +86,14 @@ brew "libvterm"
 brew "libxmlsec1"
 # Security and system auditing tool to harden systems
 brew "lynis"
-# Swiss Army knife of email handling
-brew "mailutils"
+# Utility for directing compilation
+brew "make"
+# Mac App Store command-line interface
+brew "mas"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
-# C++ search engine library
-brew "xapian"
 # Tool for searching e-mail messages stored in the maildir-format
 brew "mu"
 # Benchmarks performance of many different types of networking
@@ -140,24 +106,28 @@ brew "oath-toolkit"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Highly capable, feature-rich programming language
-brew "perl"
+# CLI for Postgres with auto-completion and syntax highlighting
+brew "pgcli"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Paste PNG into files
 brew "pngpaste"
-# Object-relational database system
-brew "postgresql", restart_service: true
-# Cloud native development platform
-brew "pulumi"
 # Emulator for x86 and PowerPC
 brew "qemu"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Wrapper around ripgrep that adds multiple rich file types
 brew "ripgrep-all"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Official documentation format of the GNU project
-brew "texinfo"
 # Simplified and community-driven man pages
 brew "tldr"
 # Terminal multiplexer
@@ -168,42 +138,81 @@ brew "tree"
 brew "vim"
 # Internet file retriever
 brew "wget"
+# Lexical database for the English language
+brew "wordnet"
 # Fast CSV toolkit written in Rust
 brew "xsv"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # General-purpose lossless data-compression library
 brew "zlib"
-# A terminal based graphical activity monitor inspired by gtop and vtop
-brew "cjbassi/gotop/gotop"
+# UNIX shell (command interpreter)
+brew "zsh"
+brew "d12frosted/emacs-plus/emacs-plus@27", args: ["with-dbus", "with-mailutils", "with-no-frame-refocus", "with-no-titlebar", "with-xwidgets"]
 # Disk Usage/Free Utility
 brew "muesli/tap/duf"
-# YAMAMOTO Mitsuharu's Mac port of GNU Emacs
-brew "railwaycat/emacsmacport/emacs-mac", args: ["with-dbus", "with-glib", "with-imagemagick", "with-no-title-bars", "with-rsvg", "with-starter"]
-cask "adoptopenjdk"
-# Prebuilt OpenJDK binaries
-cask "adoptopenjdk8"
+brew "sqitchers/sqitch/sqitch", args: ["with-postgres-support", "with-sqlite-support"]
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# Application launcher and productivity software
+cask "alfred"
 # Automatic tiling window manager similar to xmonad
 cask "amethyst"
+# Menu bar icon organizer
+cask "bartender"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
-# Reverse engineering platform powered by radare2
-cask "cutter"
+# API documentation browser and code snippet manager
+cask "dash"
+# Voice and text chat software
+cask "discord"
+# App to build and share containerized applications and microservices
+cask "docker"
+# Calendar software
+cask "fantastical"
+# Utility for customizing which browser to start
+cask "finicky"
+# Web browser
+cask "firefox"
+cask "focus"
 # Monospaced typeface designed for programming in Julia
 cask "font-juliamono"
 cask "font-source-code-pro"
-cask "graphql-playground"
-cask "java"
-cask "pgadmin4"
-# Tool to create native applications from command-line scripts
-cask "platypus"
-# Geographic Information System
-cask "qgis"
+# Web browser
+cask "google-chrome"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Desktop sync client for Nextcloud software products
+cask "nextcloud"
+# Monitors computer mic and webcam
+cask "oversight"
+# Collaboration platform for API development
+cask "postman"
+# Team communication and collaboration software
+cask "slack"
+# Music streaming service
+cask "spotify"
 # System monitor for the menu bar
 cask "stats"
+# IDE for TLA+
+cask "tla-plus-toolbox"
+# Free and open-source hosted hypervisor for x86 virtualization
+cask "virtualbox"
+# Open-source code editor
+cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Network protocol analyzer
 cask "wireshark"
+# Video communication and virtual meeting platform
+cask "zoom"
+# Collect, organize, cite, and share research sources
+cask "zotero"
+mas "Amphetamine", id: 937984704
+mas "Be Focused Pro", id: 961632517
+mas "Gifox", id: 1461845568
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Shush", id: 496437906
