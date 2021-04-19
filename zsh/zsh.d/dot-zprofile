@@ -10,7 +10,7 @@
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='firefox'
+  export BROWSER='open'
 fi
 
 #
@@ -44,8 +44,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/Cellar
-  /Users/zah/.emacs.d/bin
-  ~/.zprezto/completions
+  ${EMACSDIR}/bin
   $path
 )
 

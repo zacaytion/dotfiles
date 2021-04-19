@@ -63,4 +63,4 @@
 (package! org-ref)
 (package! org-roam-bibtex)
 (package! beacon
-  :reciepe (:host github :repo "Malabarba/beacon" :files ("*.el")))
+  :recipe (:host github :repo "Malabarba/beacon" :files ("*.el")))

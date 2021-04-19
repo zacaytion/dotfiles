@@ -2,12 +2,10 @@
 	name = Zach Harris
 	email = z@zharr.is
 	username = zacaytion
+
 [credential]
 	helper = osxkeychain
-[init]
-	templatedir = ~/.git_template
-[alias]
-	ctags = !.git/hooks/ctags
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
@@ -15,3 +13,4 @@
 	clean = git-lfs clean -- %f
 [color]
 	ui = auto
+
