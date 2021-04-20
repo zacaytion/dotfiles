@@ -12,6 +12,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh.d
 export DOOMDIR=$XDG_CONFIG_HOME/doom.d
 export EMACSDIR=$HOME/.emacs.d
+export ENCHANT_CONFIG_DIR=$XDG_CONFIG_HOME/enchant
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then

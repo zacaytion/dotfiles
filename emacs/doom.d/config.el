@@ -3,12 +3,15 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-;;; Code:
 (setq user-full-name "Zach Harris"
-      user-mail-address "z@zharr.is")
+      user-mail-address "z@zharr.is"
+      doom-theme 'doom-dracula
+
+      ;; Line numbers are pretty slow all around. The performance boost of
+      ;; disabling them outweighs the utility of always keeping them on.
+      display-line-numbers-type nil
+      org-directory "~/org/"
+      org-archive-location "~/org/archive/")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -22,24 +25,16 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Operator Mono" :size 14 :weight 'semi-light )
-      doom-big-font (font-spec :family "Operator Mono" :size 26 :weight 'light )
-      doom-unicode-font (font-spec :family "JuliaMono")
-      doom-variable-pitch-font (font-spec :family "Source Code Variable" :size 14 :weight 'light)
-      doom-serif-font (font-spec :family "Space Mono" :size 14 :weight 'light))
+(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'light :slant 'normal)
+            doom-big-font (font-spec :family "Fira Code" :size 28 :weight 'light )
+            doom-unicode-font (font-spec :family "JuliaMono")
+            doom-variable-pitch-font (font-spec :family "Fira Code" :size 24 )
+            doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
-;; (beacon-mode 1)
-;; (setq beacon-size 80)
+;; ; Prevents some cases of Emacs flickering
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/"
-      org-archive-location "~/org/archive/")
-
+(setenv "LANG" "en_US")
 ;; Org-ref
 ;; Set up bibliography
 (setq org-ref-default-bibliography '("~/nextcloud/bibliography/myBibliography.bib"))
@@ -51,9 +46,6 @@
 (add-hook 'after-init-hook #'org-roam-bibtex-mode)
 (define-key org-roam-bibtex-mode-map (kbd "C-c n a") #'orb-note-actions)
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
 
 (menu-bar-mode 0) ;menu bar is explicitly turned on for beginners. Change the value to 0.
 
@@ -74,7 +66,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setenv "LANG" "en_US")
 
 (setq org-use-property-inheritance t ; it's convenient to have properties inherited
       org-enforce-todo-dependencies t
@@ -135,3 +126,8 @@
   :commands (info-colors-fontify-node))
 (add-hook 'Info-selection-hook 'info-colors-fontify-node)
 (add-hook 'Info-mode-hook #'mixed-pitch-mode)
+
+(setq ispell-program-name "aspell"
+      aspell-dictionary "en_US-w_accents"
+      aspell-program-name "/usr/local/bin/aspell"
+      ispell-dictionary "en_US-w_accents")
