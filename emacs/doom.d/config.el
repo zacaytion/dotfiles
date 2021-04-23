@@ -7,6 +7,8 @@
       user-mail-address "z@zharr.is"
       doom-theme 'doom-dracula
 
+      gc-cons-threshold 100000000
+      lsp-idle-delay 0.6
       ;; Line numbers are pretty slow all around. The performance boost of
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil
@@ -114,7 +116,7 @@
   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 
 (after! company
-  (setq company-idle-delay 0.5
+  (setq company-idle-delay 0.1
         company-minimum-prefix-length 2)
   (setq company-show-numbers t)
   (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
@@ -130,4 +132,6 @@
 (setq ispell-program-name "aspell"
       aspell-dictionary "en_US-w_accents"
       aspell-program-name "/usr/local/bin/aspell"
-      ispell-dictionary "en_US-w_accents")
+      ispell-dictionary "en_US-w_accents"
+      flycheck-textlint-config (concat (getenv "XDG_CONFIG_HOME") "/textlint/textlintrc.json")
+      )

@@ -20,7 +20,7 @@
        ;;layout
 
        :completion
-       (company +childframe)
+       company
        ;;helm
        ;;ido
        (ivy +fuzzy

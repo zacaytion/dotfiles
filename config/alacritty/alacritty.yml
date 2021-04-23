@@ -349,7 +349,9 @@ live_config_reload: true
 shell:
     program: /bin/zsh
     args:
-        - --login
+        - -l
+        - -c
+        - "tmux attach || tmux"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working

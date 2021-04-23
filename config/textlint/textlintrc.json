@@ -1,0 +1,17 @@
+{
+  "filters": {},
+  "rules": {
+    "apostrophe": true,
+    "editorconfig": true,
+    "title-case": true,
+    "alex": {
+      "profanitySureness": 1,
+      "noBinary": true,
+      "allow": [
+        "invalid",
+        "add",
+        "hostesses-hosts"
+      ]
+    }
+	}
+}
