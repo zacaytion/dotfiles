@@ -28,7 +28,7 @@
             +prescient)
 
        :ui
-       ;; deft
+       ;;deft
        doom
        doom-dashboard
        doom-quit
@@ -39,7 +39,7 @@
        ;;indent-guides
        ;;ligatures
        ;;minimap
-       (modeline +light) 
+       modeline
        nav-flash
        ;;neotree
        ophints
@@ -101,57 +101,61 @@
        ;;pass
        pdf
        ;;prodigy
-       rgb                ; creating color strings
+       rgb
        taskrunner
-       terraform          ; infrastructure as code
-       ;;tmux
+       terraform
+       tmux
        upload
 
        :os
-       (:if IS-MAC macos)               ; improve compatibility with macOS
+       (:if IS-MAC macos)
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
-       ;;agda              ; types of types of types of types...
-       ;;cc                ; C/C++/Obj-C madness
-       ;;clojure           ; java with a lisp
-       ;;common-lisp       ; if you've seen one lisp, you've seen them all
-       ;;coq               ; proofs-as-programs
-       ;;crystal           ; ruby at the speed of c
-       ;;csharp            ; unity, .NET, and mono shenanigans
-       data                     ; config/data formats
-       ;;(dart +flutter)   ; paint ui and not much else
-       elixir            ; erlang done right
-       ;;elm               ; care for a cup of TEA?
-       emacs-lisp                       ; drown in parentheses
-       ;;erlang            ; an elegant language for a more civilized age
-       ;;ess               ; emacs speaks statistics
-       ;;faust             ; dsp, but you get to keep your soul
-       ;;fsharp            ; ML stands for Microsoft's Language
-       ;;fstar             ; (dependent) types and (monadic) effects and Z3
-       ;;gdscript          ; the language you waited for
-       ;;(go +lsp)         ; the hipster dialect
-       ;;(haskell +dante)  ; a language that's lazier than I am
-       ;;hy                ; readability of scheme w/ speed of python
-       ;;idris             ;
-       (json +lsp)          ; At least it ain't XML
-       ;; (java +lsp)          ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)    ; all(hope(abandon(ye(who(enter(here))))))
-       ;;julia             ; a better, faster MATLAB
-       ;;kotlin            ; a better, slicker Java(Script)
-       ;;latex             ; writing papers in Emacs has never been so fun
+       ;;agda
+       ;;cc
+       ;;clojure
+       ;;common-lisp
+       ;;coq
+       ;;crystal
+       ;;csharp
+       data
+       ;;(dart +flutter)
+       elixir
+       ;;elm
+       emacs-lisp
+       ;;erlang
+       ;;ess
+       ;;faust
+       ;;fsharp
+       ;;fstar
+       ;;gdscript
+       ;;(go +lsp)
+       ;;(haskell +dante)
+       ;;hy
+       ;;idris
+       (json +lsp)
+       ;; (java +lsp)
+       (javascript +lsp)
+       ;;julia
+       ;;kotlin
+       ;;latex
        ;;lean
        ;;factor
-       ;;ledger            ; an accounting system in Emacs
-       ;;lua               ; one-based indices? one-based indices
-       (markdown +grip)  ; writing docs for people to ignore
-       ;;nim               ; python + lisp at the speed of c
-       ;; nix               ; I hereby declare "nix geht mehr!"
-       ;;ocaml             ; an objective camel
-       (org +hugo                       ; organize your plain life in plain text
+       ;;ledger
+       ;;lua
+       (markdown +grip)
+       ;;nim
+       ;;nix
+       ;;ocaml
+       (org +dragndrop
+            +gnuplot
+            +hugo
+            +noter
             +pandoc
             +pomodoro
-            +dragndrop
+            +pretty
+            +present
             +roam)
        ;;php
        plantuml
@@ -165,7 +169,7 @@
        ;;(ruby +rails)
        ;;rust
        ;;scala
-       ;; scheme            ; a fully conniving family of lisps
+       ;;scheme
        (sh +lsp)
        ;;sml
        ;;solidity

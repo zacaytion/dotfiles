@@ -18,5 +18,6 @@
 
 (package! org-ref)
 (package! org-roam-bibtex)
+(package! org-super-agenda)
 ;; (package! beacon
 ;;   :recipe (:host github :repo "Malabarba/beacon" :files ("*.el")))

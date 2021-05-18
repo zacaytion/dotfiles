@@ -6,42 +6,191 @@
 (setq user-full-name "Zach Harris"
       user-mail-address "z@zharr.is"
       doom-theme 'doom-dracula
-
       gc-cons-threshold 100000000
       lsp-idle-delay 0.6
       ;; Line numbers are pretty slow all around. The performance boost of
       ;; disabling them outweighs the utility of always keeping them on.
-      display-line-numbers-type nil
-      org-directory "~/org/"
-      org-archive-location "~/org/archive/")
+      display-line-numbers-type nil)
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'light :slant 'normal)
-            doom-big-font (font-spec :family "Fira Code" :size 28 :weight 'light )
-            doom-unicode-font (font-spec :family "JuliaMono")
-            doom-variable-pitch-font (font-spec :family "Fira Code" :size 24 )
-            doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
+      doom-big-font (font-spec :family "Fira Code" :size 28 :weight 'light )
+      doom-unicode-font (font-spec :family "JuliaMono")
+      doom-variable-pitch-font (font-spec :family "Fira Code" :size 24 )
+      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 
 ;; ; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 (setenv "LANG" "en_US")
-;; Org-ref
-;; Set up bibliography
-(setq org-ref-default-bibliography '("~/nextcloud/bibliography/myBibliography.bib"))
-(setq bibtex-completion-bibliography "~/nextcloud/bibliography/myBibliography.bib")
+;;; ORG MODE
+
+(setq org-directory "~/org/"
+      org-roam-directory "~/org/roam"
+      org-archive-location "~/org/archive/"
+      org-agenda-files '("~/org/")
+      org-ref-default-bibliography '("~/nextcloud/bibliography/myBibliography.bib")
+      bibtex-completion-bibliography "~/nextcloud/bibliography/myBibliography.bib")
+
+(after! org
+  (setq org-use-property-inheritance t ; it's convenient to have properties inherited
+        org-enforce-todo-dependencies t
+        org-enforce-todo-checkbox-dependencies t
+        org-log-done 'time      ; having the time a item is done sounds convininet
+        org-log-into-drawer t
+        org-list-allow-alphabetical t     ; have a. A. a) A) list bullets
+        org-export-in-background t              ; run export processes in external emacs process
+        org-catch-invisible-edits 'smart
+        org-journal-dir "~/org/journal/"
+        org-journal-date-format "%A, %d %B %Y"
+        org-journal-file-type 'weekly))
+
+(after! org-superstar
+  (setq org-superstar-headline-bullets-list '("§" "❡" "◊" "※" "○" "⟠" "⦾" "⧫" "⁂" "✧" "⦿" "✦" "⌑")
+        org-superstar-prettify-item-bullets t ))
+
+(setq org-ellipsis " ▾ "
+      org-hide-leading-stars t
+      org-priority-highest ?A
+      org-priority-lowest ?E
+      )
+
+(after! org-agenda
+  (org-super-agenda-mode)
+  (setq org-agenda-prefix-format
+        '((agenda . " %i %-12:c%?-12t% s")
+          ;; Indent todo items by level to show nesting
+          (todo . " %i %-12:c%l")
+          (tags . " %i %-12:c")
+          (search . " %i %-12:c")))
+  (setq org-agenda-include-diary t
+        org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-deadline-if-done t
+        org-agenda-include-deadlines t
+        org-agenda-block-separator nil
+        org-agenda-tags-column 100 ;; from testing this seems to be a good value
+        org-agenda-compact-blocks t
+        ))
+
+(use-package! org-super-agenda
+  :commands (org-super-agenda-mode))
+
+
+(defvar +org-capture-someday-file "~/org/someday.org")
+(defvar +org-capture-personal-file "~/org/personal.org")
+(defvar +org-capture-work-file "~/org/postlight.org")
+(defvar +org-capture-bucket-file "~/org/bucket.org")
+
+
+(after! org
+  (use-package! doct
+    :config
+    (setq org-capture-templates
+          (doct `(("Personal todo" :keys "t"
+                   :file +org-capture-todo-file
+                   :prepend t
+                   :headline "Inbox"
+                   :type entry
+                   :template ("* TODO %?"
+                              "%i %a")
+                   )
+                  ("Personal note" :keys "n"
+                   :file +org-capture-personal-file
+                   :prepend t
+                   :headline "Inbox"
+                   :type entry
+                   :template ("* %?"
+                              "%i %a"))
+                  ("Bucket" :keys "b"
+                   :file +org-capture-bucket-file
+                   :prepend t
+                   :headline "Bucket"
+                   :type entry
+                   :template ("* [ ] %{desc}%? :%{i-type}:"
+                              "%i %a")
+                   :children (("Webpage" :keys "w"
+                               :desc "%(org-cliplink-capture) "
+                               :i-type "read:web"
+                               )
+                              ("Article" :keys "a"
+                               :desc ""
+                               :i-type "read:reaserch"
+                               )
+                              ("Information" :keys "i"
+                               :desc ""
+                               :i-type "read:info"
+                               )
+                              ("Idea" :keys "I"
+                               :desc ""
+                               :i-type "idea"
+                               )))
+                  ("Work" :keys "p"
+                   :file +org-capture-work-file
+                   :prepend t
+                   :headline "Tasks"
+                   :type entry
+                   :template ("* TODO %? %^G%{extra}"
+                              "%i %a")
+                   :children (("General Task" :keys "k"
+                               :extra ""
+                               )
+                              ("Task with deadline" :keys "d"
+                               :extra "\nDEADLINE: %^{Deadline:}t"
+                               )
+                              ("Scheduled Task" :keys "s"
+                               :extra "\nSCHEDULED: %^{Start time:}t"
+                               )
+                              ))
+                  ("Project" :keys "p"
+                   :prepend t
+                   :type entry
+                   :headline "Inbox"
+                   :template ("* %{time-or-todo} %?"
+                              "%i"
+                              "%a")
+                   :file ""
+                   :custom (:time-or-todo "")
+                   :children (("Project-local todo" :keys "t"
+                               :time-or-todo "TODO"
+                               :file +org-capture-project-todo-file)
+                              ("Project-local note" :keys "n"
+                               :time-or-todo "%U"
+                               :file +org-capture-project-notes-file)))
+                  ("\tCentralised project templates"
+                   :keys "o"
+                   :type entry
+                   :prepend t
+                   :template ("* %{time-or-todo} %?"
+                              "%i"
+                              "%a")
+                   :children (("Project todo"
+                               :keys "t"
+                               :prepend nil
+                               :time-or-todo "TODO"
+                               :heading "Tasks"
+                               :file +org-capture-central-project-todo-file)
+                              ("Project note"
+                               :keys "n"
+                               :time-or-todo "%U"
+                               :heading "Notes"
+                               :file +org-capture-central-project-notes-file))))))))
+
+
+
 (global-set-key (kbd "<f6>") #'org-ref-helm-insert-cite-link)
+
+
+;; Helper function to open file with hotfkey
+(defun z/add-file-keybinding (key file &optional desc)
+  (let ((key key)
+        (file file)
+        (desc desc))
+    (map! :desc (or desc file)
+          key
+          (lambda () (interactive) (find-file file)))))
+
+(z/add-file-keybinding "C-c z w" "~/org/postlight.org" "postlight.org")
+(z/add-file-keybinding "C-c z p" "~/org/personal.org" "personal.org")
+(z/add-file-keybinding "C-c z s" "~/org/someday.org" "someday.org")
 
 ;; Org-roam-bibtex
 (require `org-roam-bibtex)
@@ -51,40 +200,12 @@
 
 (menu-bar-mode 0) ;menu bar is explicitly turned on for beginners. Change the value to 0.
 
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-
-(setq org-use-property-inheritance t ; it's convenient to have properties inherited
-      org-enforce-todo-dependencies t
-      org-enforce-todo-checkbox-dependencies t
-      org-log-done 'time      ; having the time a item is done sounds convininet
-      org-list-allow-alphabetical t     ; have a. A. a) A) list bullets
-      org-catch-invisible-edits 'smart) ; try not to accidently do weird stuff in invisible regions
-
-;; (setq org-journal-dir "~/org/journal/"
-      ;; org-journal-date-format "%A, %d %B %Y"
-      ;; org-journal-file-type 'weekly)
-
+;; (setq
 
 ;; Via https://tecosaur.github.io/emacs-config/config.html
 (setq-default tab-width 2                          ; Set width for tabs
               x-stretch-cursor t                   ; Stretch cursor to the glyph width
-              which-key-idle-delay 0.5        
+              which-key-idle-delay 0.5
               delete-by-moving-to-trash t          ; Delete files to trash
               uniquify-buffer-name-style 'forward  ; Uniquify buffer names
               window-combination-resize t)         ; take new window space from all other windows (not just current)
@@ -133,5 +254,9 @@
       aspell-dictionary "en_US-w_accents"
       aspell-program-name "/usr/local/bin/aspell"
       ispell-dictionary "en_US-w_accents"
-      flycheck-textlint-config (concat (getenv "XDG_CONFIG_HOME") "/textlint/textlintrc.json")
-      )
+      flycheck-textlint-config (concat (getenv "XDG_CONFIG_HOME") "/textlint/textlintrc.json"))
+
+(setq projectile-ignored-projects '("~/" "/tmp" "~/.emacs.d/.local/straight/repos/"))
+(defun projectile-ignored-project-function (filepath)
+  "Return t if FILEPATH is within any of `projectile-ignored-projects'"
+  (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects)))
