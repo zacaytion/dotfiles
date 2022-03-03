@@ -1,4 +1,4 @@
-;;; init.el --- Summary -*- lexical-binding: t; -*-
+;;; init.kl --- Summary -*- lexical-binding: t; -*-
 ;;; Commentary: This file controls what Doom modules are enabled and what order they load
 ;;; in. Remember to run 'doom sync' after modifying it!
 
@@ -26,6 +26,7 @@
        (ivy +fuzzy
             +icons
             +prescient)
+       (vertico)
 
        :ui
        ;;deft
@@ -43,13 +44,14 @@
        nav-flash
        ;;neotree
        ophints
-       (popup +defaults)
+       (popup +all
+              +defaults)
        ;;tabs
-       ;;treemacs
-       unicode
+       treemacs
+       ;;unicode
        vc-gutter
        vi-tilde-fringe
-       window-select
+       (window-select +numbers)
        workspaces
        zen
 
@@ -57,21 +59,21 @@
        (evil +everywhere)               ; come to the dark side, we have cookies
        file-templates                   ; auto-snippets for empty files
        fold                             ; (nigh) universal code folding
-       (format +onsave)                 ; automated prettiness
+       format                 ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
-       ;; lispy                       ; vim for lisp, for people who don't like vim
+       ;;lispy                       ; vim for lisp, for people who don't like vim
        multiple-cursors            ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
-       ;;rotate-text       ; cycle region at point between text candidates
+       rotate-text       ; cycle region at point between text candidates
        snippets
        word-wrap
 
        :emacs
        (dired +ranger +icons)
        electric
-       ibuffer
-       undo
+       (ibuffer +icons)
+       (undo +tree)
        vc
 
        :term
@@ -82,19 +84,20 @@
 
        :checkers
        syntax
-       (spell +enchant +everywhere)
-       ;; grammar
+       (spell +aspell)
+       grammar
 
        :tools
-       ;; ansible
-       (debugger +lsp)
+       ansible
+       ;;(debugger +lsp)
        direnv
        docker
        editorconfig
        ;;ein
        (eval +overlay)
        ;; gist
-       lookup
+       (lookup +dictionary
+               +docsets)
        lsp
        (magit +forge)
        make
@@ -121,7 +124,7 @@
        ;;csharp
        data
        ;;(dart +flutter)
-       elixir
+       (elixir +lsp)
        ;;elm
        emacs-lisp
        ;;erlang
@@ -130,14 +133,14 @@
        ;;fsharp
        ;;fstar
        ;;gdscript
-       ;;(go +lsp)
+       (go +lsp)
        ;;(haskell +dante)
        ;;hy
        ;;idris
        (json +lsp)
-       ;; (java +lsp)
+       ;;(java +lsp)
        (javascript +lsp)
-       ;;julia
+       (julia +lsp)
        ;;kotlin
        ;;latex
        ;;lean
@@ -156,20 +159,23 @@
             +pomodoro
             +pretty
             +present
-            +roam)
+            +roam2)
        ;;php
        plantuml
        ;;purescript
-       (python +lsp )
+       (python
+        +lsp
+        +pyright
+        +poetry)
        ;;qt
        ;;racket
        ;;raku
        rest
        ;;rst
        ;;(ruby +rails)
-       ;;rust
+       (rust +lsp)
        ;;scala
-       ;;scheme
+       scheme
        (sh +lsp)
        ;;sml
        ;;solidity

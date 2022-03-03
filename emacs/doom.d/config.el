@@ -12,11 +12,11 @@
       ;; disabling them outweighs the utility of always keeping them on.
       display-line-numbers-type nil)
 
-(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'light :slant 'normal)
-      doom-big-font (font-spec :family "Fira Code" :size 28 :weight 'light )
+(setq doom-font (font-spec :family "JuliaMono" :size 18 :weight 'light )
+      doom-big-font (font-spec :family "JuliaMono" :size 32 :weight 'light )
       doom-unicode-font (font-spec :family "JuliaMono")
-      doom-variable-pitch-font (font-spec :family "Fira Code" :size 24 )
-      doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
+      doom-variable-pitch-font (font-spec :family "Source Code Variable" :size 26 )
+      doom-serif-font (font-spec :family "Input Serif Narrow" :weight 'light))
 
 ;; ; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -193,9 +193,9 @@
 (z/add-file-keybinding "C-c z s" "~/org/someday.org" "someday.org")
 
 ;; Org-roam-bibtex
-(require `org-roam-bibtex)
-(add-hook 'after-init-hook #'org-roam-bibtex-mode)
-(define-key org-roam-bibtex-mode-map (kbd "C-c n a") #'orb-note-actions)
+;; (require `org-roam-bibtex)
+;; (add-hook 'after-init-hook #'org-roam-bibtex-mode)
+;; (define-key org-roam-bibtex-mode-map (kbd "C-c n a") #'orb-note-actions)
 
 
 (menu-bar-mode 0) ;menu bar is explicitly turned on for beginners. Change the value to 0.
@@ -204,6 +204,7 @@
 
 ;; Via https://tecosaur.github.io/emacs-config/config.html
 (setq-default tab-width 2                          ; Set width for tabs
+              indent-tabs-mode nil
               x-stretch-cursor t                   ; Stretch cursor to the glyph width
               which-key-idle-delay 0.5
               delete-by-moving-to-trash t          ; Delete files to trash
@@ -250,13 +251,25 @@
 (add-hook 'Info-selection-hook 'info-colors-fontify-node)
 (add-hook 'Info-mode-hook #'mixed-pitch-mode)
 
+(setenv "DICTIONARY" "en_US")
+
 (setq ispell-program-name "aspell"
-      aspell-dictionary "en_US-w_accents"
+      ispell-dictionary "en_US-w_accents.multi"
+      aspell-dictionary "en_US-w_accents.multi"
       aspell-program-name "/usr/local/bin/aspell"
-      ispell-dictionary "en_US-w_accents"
       flycheck-textlint-config (concat (getenv "XDG_CONFIG_HOME") "/textlint/textlintrc.json"))
+
+(after! spell-fu
+  (setq spell-fu-idle-delay 0.5))
 
 (setq projectile-ignored-projects '("~/" "/tmp" "~/.emacs.d/.local/straight/repos/"))
 (defun projectile-ignored-project-function (filepath)
   "Return t if FILEPATH is within any of `projectile-ignored-projects'"
   (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects)))
+
+(setq-hook! 'typescript-mode-hook +format-with-lsp :none )
+(setq-hook! 'rjsx-mode-hook +format-with-lsp :none )
+
+(use-package! ox-jira :after org)
+(make-directory "~/.org-jira" 'ignore-if-exists)
+(setq jiralib-url "https://axioscode.atlassian.net/")

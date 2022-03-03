@@ -3,4 +3,6 @@ export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
 export EMACSDIR=${HOME}/.emacs.d
 
+export DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET
+
 source ${HOME}/.config/zsh.d/.zshenv

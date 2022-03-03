@@ -42,9 +42,6 @@ symbol = " "
 [golang]
 symbol = " "
 
-[haskell]
-symbol = " "
-
 [hg_branch]
 symbol = " "
 
@@ -67,7 +64,7 @@ symbol = " "
 symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [openstack]
 disabled = true

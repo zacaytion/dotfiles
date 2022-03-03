@@ -7,10 +7,21 @@
 	helper = osxkeychain
 
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
 	required = true
 	clean = git-lfs clean -- %f
 [color]
 	ui = auto
 
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
+[init]
+	defaultBranch = main
+
+[diff "org"]
+  xfuncname = "^(\\*+ +.*)$"

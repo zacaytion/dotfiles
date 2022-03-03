@@ -17,7 +17,12 @@
   :recipe (:host github :repo "progfolio/doct"))
 
 (package! org-ref)
-(package! org-roam-bibtex)
+;;(package! org-roam-bibtex)
 (package! org-super-agenda)
 ;; (package! beacon
 ;;   :recipe (:host github :repo "Malabarba/beacon" :files ("*.el")))
+
+(package! ox-jira)
+(package! org-jira)
+
+(unpin! lsp-mode)

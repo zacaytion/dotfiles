@@ -174,6 +174,10 @@ enable_pager = True
 # DSN to call by -D option
 [alias_dsn]
 # example_dsn = postgresql://[user[:password]@][netloc][:port][/dbname]
+pf_root = postgresql://pf_root:pf_root_pw@localhost:5432/pf_local
+pf_owner = postgresql://pf_owner:pf_owner_pw@localhost:5432/probable_futures
+
+
 
 # Format for number representation
 # for decimal "d" - 12345678, ",d" - 12,345,678
