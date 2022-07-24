@@ -26,3 +26,10 @@
 (package! org-jira)
 
 (unpin! lsp-mode)
+(unpin! org)
+
+(package! protobuf-mode
+  :recipe (:host github :repo "emacsmirror/protobuf-mode" :files (:defaults "*")))
+
+(package! tree-sitter)
+(package! tree-sitter-langs)

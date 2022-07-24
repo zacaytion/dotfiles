@@ -1,10 +1,11 @@
-;;; init.kl --- Summary -*- lexical-binding: t; -*-
-;;; Commentary: This file controls what Doom modules are enabled and what order they load
-;;; in. Remember to run 'doom sync' after modifying it!
+;;; init.el -*- lexical-binding: t; -*-
+
+;; This file controls what Doom modules are enabled and what order they load
+;; in. Remember to run 'doom sync' after modifying it!
 
 ;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a "Module Index" link where you'll fin d
-;;      a comprehensive list of Doom's modules and what flags they support.
+;;      documentation. There you'll find a link to Doom's Module Index where all
+;;      of our modules are listed, including what flags they support.
 
 ;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
 ;;      'C-c c k' for non-vim users) to view its documentation. This works on
@@ -13,20 +14,19 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
-;;; Code:
 (doom! :input
        ;;chinese
        ;;japanese
-       ;;layout
+       ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
        company
        ;;helm
        ;;ido
-       (ivy +fuzzy
-            +icons
-            +prescient)
-       (vertico)
+       ;;(ivy +fuzzy
+       ;;      +icons
+       ;;      +prescient)
+       (vertico +icons) 
 
        :ui
        ;;deft
@@ -34,7 +34,6 @@
        doom-dashboard
        doom-quit
        (emoji +unicode)
-       ;;fill-column
        hl-todo
        ;;hydra
        ;;indent-guides
@@ -53,7 +52,7 @@
        vi-tilde-fringe
        (window-select +numbers)
        workspaces
-       zen
+       ;;zen
 
        :editor
        (evil +everywhere)               ; come to the dark side, we have cookies
@@ -83,22 +82,23 @@
        vterm
 
        :checkers
-       syntax
-       (spell +aspell)
+       (syntax +childframe)
+       ;;(spell +hunspell +everywhere)
        grammar
 
        :tools
-       ansible
+       ;;ansible
+       ;;biblio            ; Writes a PhD for you (citation needed)
        ;;(debugger +lsp)
        direnv
        docker
        editorconfig
        ;;ein
        (eval +overlay)
-       ;; gist
+       gist
        (lookup +dictionary
                +docsets)
-       lsp
+       (lsp +elgot +peek)
        (magit +forge)
        make
        ;;pass
@@ -112,11 +112,12 @@
 
        :os
        (:if IS-MAC macos)
-       ;;tty               ; improve the terminal Emacs experience
+       tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda
-       ;;cc
+       ;;beancount         ; mind the GAAP
+       ;;(cc +lsp)         ; C > C++ == 1
        ;;clojure
        ;;common-lisp
        ;;coq
@@ -124,28 +125,33 @@
        ;;csharp
        data
        ;;(dart +flutter)
+       ;;dhall
        (elixir +lsp)
        ;;elm
        emacs-lisp
        ;;erlang
        ;;ess
+       ;;factor
        ;;faust
+       ;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
        ;;fsharp
        ;;fstar
        ;;gdscript
        (go +lsp)
+       (graphql +lsp)    ; Give queries a REST
        ;;(haskell +dante)
        ;;hy
        ;;idris
        (json +lsp)
        ;;(java +lsp)
        (javascript +lsp)
-       (julia +lsp)
+       ;;(julia +lsp)
        ;;kotlin
-       ;;latex
+       (latex +latexmk
+              +lsp
+              +fold)
        ;;lean
-       ;;factor
-       ;;ledger
+       ;;ledger            ; be audit you can be
        ;;lua
        (markdown +grip)
        ;;nim
@@ -163,26 +169,27 @@
        ;;php
        plantuml
        ;;purescript
-       (python
-        +lsp
-        +pyright
-        +poetry)
+       (python +lsp
+               +pyright
+               +poetry)
        ;;qt
        ;;racket
        ;;raku
        rest
        ;;rst
        ;;(ruby +rails)
-       (rust +lsp)
+       ;;(rust +lsp)
        ;;scala
-       scheme
+       (scheme +guile)   ; a fully conniving family of lisps
        (sh +lsp)
        ;;sml
        ;;solidity
        ;;swift
        ;;terra
-       web
+       (web +lsp)
        (yaml +lsp)
+       ;;zig               ; C, but simpler
+
 
        :email
        ;;(mu4e +gmail)
@@ -190,11 +197,12 @@
        ;;(wanderlust +gmail)
 
        :app
-       calendar
-       everywhere
-       ;;irc
-       ;; (rss +org)
-       ;;twitter
+       ;;calendar
+       ;;emms
+       everywhere        ; *leave* Emacs!? You must be joking
+       ;;irc               ; how neckbeards socialize
+       ;;(rss +org)        ; emacs as an RSS reader
+       ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
        ;;literate

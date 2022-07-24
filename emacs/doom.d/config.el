@@ -5,7 +5,7 @@
 
 (setq user-full-name "Zach Harris"
       user-mail-address "z@zharr.is"
-      doom-theme 'doom-dracula
+      doom-theme 'modus-vivendi
       gc-cons-threshold 100000000
       lsp-idle-delay 0.6
       ;; Line numbers are pretty slow all around. The performance boost of
@@ -251,13 +251,10 @@
 (add-hook 'Info-selection-hook 'info-colors-fontify-node)
 (add-hook 'Info-mode-hook #'mixed-pitch-mode)
 
-(setenv "DICTIONARY" "en_US")
-
-(setq ispell-program-name "aspell"
-      ispell-dictionary "en_US-w_accents.multi"
-      aspell-dictionary "en_US-w_accents.multi"
-      aspell-program-name "/usr/local/bin/aspell"
-      flycheck-textlint-config (concat (getenv "XDG_CONFIG_HOME") "/textlint/textlintrc.json"))
+(setq ispell-dictionary "en_US-custom")
+(setq ispell-program-name "hunspell")
+(ispell-check-version)
+(setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir))
 
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5))
@@ -273,3 +270,12 @@
 (use-package! ox-jira :after org)
 (make-directory "~/.org-jira" 'ignore-if-exists)
 (setq jiralib-url "https://axioscode.atlassian.net/")
+
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+
+(setq flycheck-textlint-config "~/.config/textlint/textlintrc.json")

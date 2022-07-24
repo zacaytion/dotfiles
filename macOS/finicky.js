@@ -8,7 +8,7 @@ const urls = {
     "murmur.cultureamp.com",
     "postlight.rewatch.com",
   ],
-  axios: ["github.com/axioscode", "axioscode.atlassian.net"],
+  axios: [/github\.com\/axioscode/, /axioscode\.atlassian\.net/, /axios\.twingate\.com/],
 };
 
 module.exports = {
@@ -21,12 +21,19 @@ module.exports = {
         profile: "Default",
       },
     },
-    // {
-    //   match: finicky.matchHostnames(urls.axios),
-    //   browser: {
-    //     name: "Google Chrome",
-    //     profile: "Axios",
-    //   },
-    // },
+    {
+      match: /https:\/\/stackoverflow\.com\/c\/postlight/,
+      browser: {
+        name: "Google Chrome",
+        profile: "Default",
+      },
+    },
+    {
+      match: finicky.matchHostnames(urls.axios),
+      browser: {
+        name: "Google Chrome",
+        profile: "Axios",
+      },
+    },
   ],
 };
