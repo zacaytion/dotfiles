@@ -26,7 +26,7 @@
        ;;(ivy +fuzzy
        ;;      +icons
        ;;      +prescient)
-       (vertico +icons) 
+       (vertico +icons +childframe) 
 
        :ui
        ;;deft
@@ -108,6 +108,7 @@
        taskrunner
        terraform
        tmux
+       tree-sitter
        upload
 
        :os
@@ -126,7 +127,7 @@
        data
        ;;(dart +flutter)
        ;;dhall
-       (elixir +lsp)
+       (elixir +lsp +tree-sitter)
        ;;elm
        emacs-lisp
        ;;erlang
@@ -137,14 +138,14 @@
        ;;fsharp
        ;;fstar
        ;;gdscript
-       (go +lsp)
+       (go +lsp +tree-sitter)
        (graphql +lsp)    ; Give queries a REST
        ;;(haskell +dante)
        ;;hy
        ;;idris
-       (json +lsp)
+       (json +lsp +tree-sitter)
        ;;(java +lsp)
-       (javascript +lsp)
+       (javascript +lsp +tree-sitter)
        ;;(julia +lsp)
        ;;kotlin
        (latex +latexmk
@@ -170,23 +171,23 @@
        plantuml
        ;;purescript
        (python +lsp
-               +pyright
-               +poetry)
+	       +tree-sitter
+               +pyright)
        ;;qt
        ;;racket
        ;;raku
-       rest
+       (rest +jq)
        ;;rst
        ;;(ruby +rails)
        ;;(rust +lsp)
        ;;scala
        (scheme +guile)   ; a fully conniving family of lisps
-       (sh +lsp)
+       (sh +lsp +tree-sitter)
        ;;sml
        ;;solidity
        ;;swift
        ;;terra
-       (web +lsp)
+       (web +lsp +tree-sitter)
        (yaml +lsp)
        ;;zig               ; C, but simpler
 
