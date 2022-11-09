@@ -15,18 +15,19 @@
 ;;      directory (for easy access to its source code).
 
 (doom! :input
+       ;;bidi
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company
+       (company +tng)
        ;;helm
        ;;ido
        ;;(ivy +fuzzy
        ;;      +icons
        ;;      +prescient)
-       (vertico +icons +childframe) 
+       (vertico +icons )
 
        :ui
        ;;deft
@@ -34,6 +35,7 @@
        doom-dashboard
        doom-quit
        (emoji +unicode)
+       ;;fill-column
        hl-todo
        ;;hydra
        ;;indent-guides
@@ -43,8 +45,7 @@
        nav-flash
        ;;neotree
        ophints
-       (popup +all
-              +defaults)
+       (popup +all +defaults)
        ;;tabs
        treemacs
        ;;unicode
@@ -82,8 +83,8 @@
        vterm
 
        :checkers
-       (syntax +childframe)
-       ;;(spell +hunspell +everywhere)
+       syntax
+       ;; (spell +hunspell +everywhere)
        grammar
 
        :tools
@@ -96,8 +97,7 @@
        ;;ein
        (eval +overlay)
        gist
-       (lookup +dictionary
-               +docsets)
+       (lookup +dictionary +docsets)
        (lsp +elgot +peek)
        (magit +forge)
        make
@@ -144,9 +144,9 @@
        ;;hy
        ;;idris
        (json +lsp +tree-sitter)
-       ;;(java +lsp)
-       (javascript +lsp +tree-sitter)
-       ;;(julia +lsp)
+       ;;(java +lsp +tree-sitter)
+       (javascript +tree-sitter +lsp)
+       ;;(julia +lsp +tree-sitter)
        ;;kotlin
        (latex +latexmk
               +lsp
@@ -172,14 +172,15 @@
        ;;purescript
        (python +lsp
 	       +tree-sitter
-               +pyright)
+               +pyright
+               +poetry)
        ;;qt
        ;;racket
        ;;raku
        (rest +jq)
        ;;rst
-       ;;(ruby +rails)
-       ;;(rust +lsp)
+       ;;(ruby +rails +lsp +tree-sitter)
+       ;;(rust +lsp +tree-sitter)
        ;;scala
        (scheme +guile)   ; a fully conniving family of lisps
        (sh +lsp +tree-sitter)

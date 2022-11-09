@@ -33,3 +33,6 @@
 
 (package! tree-sitter)
 (package! tree-sitter-langs)
+
+(package! anki-editor
+  :recipe (:host github :repo "louietan/anki-editor" :files ("*.el")))

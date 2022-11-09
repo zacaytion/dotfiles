@@ -6,17 +6,16 @@
 (setq user-full-name "Zach Harris"
       user-mail-address "z@zharr.is"
       doom-theme 'modus-vivendi
-      gc-cons-threshold 100000000
-      lsp-idle-delay 0.6
+      doom-font (font-spec :family "JuliaMono" :size 18 :weight 'light )
+      doom-serif-font (font-spec :family "Input Serif Narrow" :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Source Code Variable" :size 26)
       ;; Line numbers are pretty slow all around. The performance boost of
       ;; disabling them outweighs the utility of always keeping them on.
-      display-line-numbers-type nil)
-
-(setq doom-font (font-spec :family "JuliaMono" :size 18 :weight 'light )
-      doom-big-font (font-spec :family "JuliaMono" :size 32 :weight 'light )
-      doom-unicode-font (font-spec :family "JuliaMono")
-      doom-variable-pitch-font (font-spec :family "Source Code Variable" :size 26 )
-      doom-serif-font (font-spec :family "Input Serif Narrow" :weight 'light))
+      display-line-numbers-type nil
+      load-prefer-newer t
+      search-highlight t
+      gc-cons-threshold 100000000
+      lsp-idle-delay 0.6)
 
 ;; ; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -28,8 +27,8 @@
       org-roam-directory "~/org/roam"
       org-archive-location "~/org/archive/"
       org-agenda-files '("~/org/")
-      org-ref-default-bibliography '("~/nextcloud/bibliography/myBibliography.bib")
-      bibtex-completion-bibliography "~/nextcloud/bibliography/myBibliography.bib")
+      org-ref-default-bibliography '("~/Nextcloud/bibliography/myBibliography.bib")
+      bibtex-completion-bibliography "~/Nextcloud/bibliography/myBibliography.bib")
 
 (after! org
   (setq org-use-property-inheritance t ; it's convenient to have properties inherited
@@ -267,10 +266,6 @@
 (setq-hook! 'typescript-mode-hook +format-with-lsp :none )
 (setq-hook! 'rjsx-mode-hook +format-with-lsp :none )
 
-(use-package! ox-jira :after org)
-(make-directory "~/.org-jira" 'ignore-if-exists)
-(setq jiralib-url "https://axioscode.atlassian.net/")
-
 (use-package! tree-sitter
   :config
   (require 'tree-sitter-langs)
@@ -279,3 +274,13 @@
 
 
 (setq flycheck-textlint-config "~/.config/textlint/textlintrc.json")
+
+(after! lsp-mode
+  (setq ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some machines I don't care to have
+        ;; a whole development environment for some ecosystems.
+        lsp-enable-suggest-server-download nil))
+
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil))
