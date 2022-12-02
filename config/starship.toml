@@ -13,6 +13,7 @@ disabled = true
 
 [conda]
 symbol = " "
+disabled = true
 
 [character]
 success_symbol = "[λ](bold green)"
@@ -20,6 +21,7 @@ error_symbol = "[⁊](bold red)"
 
 [dart]
 symbol = " "
+disabled = true
 
 [docker_context]
 symbol = " "
@@ -29,7 +31,7 @@ disabled = false
 symbol = " "
 
 [elm]
-symbol = " "
+disabled = true
 
 [gcloud]
 symbol = " "
@@ -40,16 +42,16 @@ disabled = true
 symbol = " "
 
 [golang]
-symbol = " "
+symbol = " "
 
 [hg_branch]
 symbol = " "
 
 [java]
-symbol = " "
+symbol = " "
 
 [julia]
-symbol = " "
+symbol = "ஃ "
 
 [line_break]
 disabled = false
@@ -59,6 +61,7 @@ symbol = " "
 
 [nim]
 symbol = " "
+disabled = true
 
 [nix_shell]
 symbol = " "
@@ -76,13 +79,13 @@ symbol = " "
 symbol = " "
 
 [php]
-symbol = " "
+symbol = " "
 
 [python]
-symbol = " "
+symbol = " "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
 symbol = " "
