@@ -44,6 +44,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/Cellar
+  /usr/local/opt/{coreutils,findutils,gnu-sed,grep,make}/libexec/gnubin
   ${EMACSDIR}/bin
   $path
 )

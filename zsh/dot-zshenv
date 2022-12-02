@@ -1,9 +1,0 @@
-export XDG_DATA_HOME=${HOME}/.local/share
-export XDG_CONFIG_HOME=${HOME}/.config
-export XDG_CACHE_HOME=${HOME}/.cache
-export EMACSDIR=${HOME}/.emacs.d
-
-export DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET
-
-export DICPATH=${HOME}/Library/Spelling/en_US-custom
-source ${HOME}/.config/zsh.d/.zshenv

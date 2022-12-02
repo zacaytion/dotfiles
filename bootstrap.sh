@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+### WIP ###
+
 source_url="https://github.com/zacaytion/dotfiles.git"
 one_password_url="https://app-updates.agilebits.com/download/OPM7"
 # https://stackoverflow.com/a/53183593

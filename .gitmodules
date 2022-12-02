@@ -5,5 +5,5 @@
 	path = zsh/zsh.d/prezto
 	url = https://github.com/zacaytion/prezto.git
 [submodule "zprezto"]
-	path = zsh/zsh.d/zprezto
+	path = config/zsh.d/zprezto
 	url = https://github.com/zacaytion/prezto.git

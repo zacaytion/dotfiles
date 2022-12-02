@@ -1,0 +1,136 @@
+* System Settings
+** Disable Tangle On Save
+#+begin_src emacs-lisp
+(remove-hook 'org-mode-hook #'+literate-enable-recompile-h)
+#+end_src
+** User Info
+#+begin_src emacs-lisp
+(setq user-full-name "Zach Harris"
+      user-mail-address "z@zharr.is")
+#+end_src
+** Language
+#+begin_src emacs-lisp
+(setenv "LANG" "en_US")
+#+end_src
+** Undo
+#+begin_src emacs-lisp
+(setq undo-limit 80000000
+      evil-want-fine-undo t)
+#+end_src
+** Saving
+#+begin_src emacs-lisp
+(setq  auto-save-default t)
+#+end_src
+** Loading
+#+begin_src emacs-lisp
+(setq  load-prefer-newer t)
+#+end_src
+
+* Display
+** Theme
+#+begin_src emacs-lisp
+(setq doom-theme 'modus-vivendi)
+#+end_src
+** Fonts
+'Comfy' version of Iosevka provided by Protesilaos:https://git.sr.ht/~protesilaos/iosevka-comfy
+The optional ~doom-big-font~ variable is for changing the style of larger fonts.
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "Iosevka Comfy" :size 18)
+      doom-big-font (font-spec :family "Iosevka Comfy Wide Duo")
+      doom-serif-font (font-spec :family "Iosevka Comfy Motion" :size 18)
+      doom-variable-pitch-font (font-spec :family "Iosevka Comfy Motion Duo" :size 16))
+#+end_src
+
+This is to prevent overflow of the modeline due to large icon size
+#+begin_src emacs-lisp
+(setq all-the-icons-scale-factor 1.1)
+#+end_src
+** Editing
+#+begin_src emacs-lisp
+(setq display-line-numbers t
+      truncate-string-ellipsis "…")
+(setq-default tab-width 2
+              indent-tabs-mode nil)
+      #+end_src
+** Search
+#+begin_src emacs-lisp
+(setq search-highlight t)
+#+end_src
+** Modeline
+
+* Packages
+** Completion
+*** Vertico
+#+begin_src emacs-lisp
+(after! vertico
+      (setq which-key-use-C-h-commands t))
+#+end_src
+** UI
+** Editor
+** Term
+** Checkers
+** Tools
+*** LSP
+*** Tree-Sitter
+** Lang
+*** Org
+#+begin_src emacs-lisp
+(setq org-directory "~/org/"
+      org-archive-location "~/org/archive/")
+(after! org
+  (setq org-use-property-inheritance t
+        org-enforce-todo-dependencies t
+        org-enforce-todo-checkbox-dependencies t
+        org-log-done 'time
+        org-log-into-drawer t
+        org-list-allow-alphabetical t
+        org-export-in-background t
+        org-catch-invisible-edits 'smart
+        org-journal-dir "~/org/journal/"
+        org-journal-date-format "%A, %d %B %Y"
+        org-journal-file-type 'weekly)
+        org-ellipsis " ▾ "
+        org-hide-leading-stars t
+        org-priority-highest ?A
+        org-priority-lowest ?E)
+#+end_src
+
+**** Agenda
+#+begin_src emacs-lisp
+(setq  org-agenda-files '("~/org/cal"))
+(after! org-agenda
+  (org-super-agenda-mode)
+  (setq org-agenda-prefix-format
+        '((agenda . " %i %-12:c%?-12t% s")
+          ;; Indent todo items by level to show nesting
+          (todo . " %i %-12:c%l")
+          (tags . " %i %-12:c")
+          (search . " %i %-12:c")))
+  (setq org-agenda-include-diary t
+        org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-deadline-if-done t
+        org-agenda-include-deadlines t
+        org-agenda-block-separator nil
+        org-agenda-tags-column 100
+        org-agenda-compact-blocks t))
+
+(use-package! org-super-agenda
+  :commands (org-super-agenda-mode))
+#+end_src
+**** Capture
+
+#+begin_src emacs-lisp
+(defvar +org-capture-someday-file "~/org/someday.org")
+(defvar +org-capture-personal-file "~/org/personal.org")
+(defvar +org-capture-work-file "~/org/postlight.org")
+(defvar +org-capture-bucket-file "~/org/bucket.org")
+
+#+end_src
+**** Roam
+
+#+begin_src emacs-lisp
+(setq org-roam-directory "~/org/roam"
+      org-agenda-files '("~/org/cal"))
+#+end_src
+
+** App

@@ -25,3 +25,5 @@ if [ -f '/Users/zah/.config/google-cloud-sdk/completion.zsh.inc' ]; then . '/Use
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+source /Users/zah/.config/broot/launcher/bash/br
