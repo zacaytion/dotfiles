@@ -1,157 +1,166 @@
-tap "d12frosted/emacs-plus"
-tap "filippo.io/age", "https://filippo.io/age"
+## Tap open the Brew
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "jesseduffield/lazydocker"
-tap "koekeishiya/formulae"
-tap "mapbox/cli"
-tap "muesli/tap"
-tap "schniz/tap"
-tap "sqitchers/sqitch"
-brew "age"
-brew "automake"
-brew "coreutils"
-brew "unixodbc"
-brew "asdf"
-brew "aspell"
-brew "sqlite"
-brew "awscli"
-brew "bat"
-brew "broot"
-brew "clang-format"
-brew "cmake"
-brew "ctags"
-brew "curl"
-brew "dashing"
-brew "dbus"
-brew "difftastic"
-brew "direnv"
-brew "editorconfig"
-brew "enchant"
-brew "entr"
-brew "exa"
-brew "exercism"
-brew "fd"
-brew "gobject-introspection"
-brew "harfbuzz"
-brew "leptonica"
-brew "ffmpeg"
-brew "findutils"
-brew "fzf"
+
+## GNU Tools
+brew "gawk"
+brew "grep"
+brew "make"
+brew "makefile2graph"
+brew "stow"
 brew "gcc"
-brew "geos"
-brew "librttopo"
-brew "libspatialite"
-brew "gdal"
-brew "gh"
+brew "gsed"
+brew "gnupg"
+brew "gpgme"
+brew "gnuplot"
+brew "libgccjit"
+brew "coreutils"
+brew "findutils"
+brew "moreutils"
+
+## GNew Tools
+brew "ripgrep"
+brew "ripgrep-all"
+brew "fd"
+brew "bat"
+brew "exa"
+
+## Git Updates
 brew "git"
 brew "git-delta"
 brew "git-lfs"
-brew "gnupg"
-brew "gpgme"
-brew "nghttp2"
-brew "gnuplot"
-brew "graphviz"
-brew "grep"
-brew "grip"
-brew "hexyl"
-brew "htop"
-brew "hugo"
-brew "hunspell"
-brew "imagemagick"
-brew "ispell"
-brew "jq"
-brew "languagetool"
-brew "lazydocker"
-brew "libgccjit"
-brew "libgr"
-brew "libssh"
-brew "libvterm"
-brew "libxmlsec1"
-brew "lynis"
-brew "mailutils"
-brew "make"
-brew "makefile2graph"
-brew "markdownlint-cli"
-brew "mas"
+
+## Encryption
+tap "filippo.io/age", "https://filippo.io/age"
+brew "age"
 brew "mkcert"
-brew "moreutils"
-brew "protobuf"
-brew "mu"
-brew "mysql-client"
-brew "n"
-brew "netperf"
-brew "nmap"
 brew "oath-toolkit"
-brew "openapi-generator"
-brew "p7zip"
-brew "pandoc"
-brew "pgcli"
-brew "pinentry-mac"
-brew "plantuml"
-brew "pngpaste"
-brew "poppler"
-brew "pre-commit"
-brew "qemu"
-brew "rclone"
-brew "ripgrep"
-brew "ripgrep-all"
-brew "shellcheck"
-brew "shfmt"
-brew "starship"
-brew "stow"
-brew "subversion"
-brew "telnet"
-brew "texlab"
-brew "tldr"
-brew "tmux"
-brew "tmuxinator"
-brew "tree"
-brew "wget"
-brew "wordnet"
-brew "wxwidgets"
-brew "xsv"
-brew "youtube-dl"
-brew "zlib"
+
+## Update Shell
 brew "zsh"
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-imagemagick", "with-native-comp", "with-no-frame-refocus", "with-no-titlebar", "with-xwidgets"]
+
+## Terminal Niceties
+cask "alacritty"
+cask "iterm2"
+brew "tmux"
+tap "koekeishiya/formulae"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
+brew "fzf"
+brew "broot"
+brew "starship"
+brew "pngpaste"
+
+## Project Configuration
+brew "asdf"
+brew "editorconfig"
+brew "direnv"
+brew "entr"
+
+## Data Munging
+brew "jq"
+brew "xsv"
+brew "hexyl"
+brew "difftastic"
+brew "pandoc"
+brew "p7zip"
+
+## API Tools
+brew "protobuf"
+brew "openapi-generator"
+
+## Linting and Formating
+brew "markdownlint-cli"
+brew "clang-format"
+brew "shellcheck"
+brew "shfmt"
+
+## Database
+brew "sqlite"
+
+## Performance
+brew "htop"
+brew "netperf"
+tap "muesli/tap"
 brew "muesli/tap/duf"
-cask "alacritty"
+cask "stats"
+
+## Networking
+brew "wget"
+brew "curl"
+brew "nmap"
+brew "telnet"
+brew "libssh"
+cask "charles"
+cask "wireshark"
+
+# Virtualization
+tap "jesseduffield/lazydocker"
+brew "lazydocker"
+brew "libvterm"
+brew "qemu" # nw
+
+## Syncing
+brew "rclone" # nw
+cask "nextcloud"
+
+## Documentaion
+cask "dash"
+brew "dashing"
+brew "tldr"
+
+## Writing
+brew "enchant"
+brew "wordnet" #nw
+brew "poppler" # nw
+brew "texlab" # nw
+
+# Graphics
+brew "graphviz"
+brew "imagemagick"
+
+## GitHub
+brew "gh"
+brew "grip"
+
+## Code Editors
+tap "d12frosted/emacs-plus"
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-imagemagick", "with-native-comp", "with-no-frame-refocus", "with-no-titlebar", "with-xwidgets"]
+cask "visual-studio-code"
+
+# Learning
+brew "exercism"
+
+## Website
+brew "hugo" # nw
+
+## App Store
+brew "mas"
+
+## Communications
+cask "discord" # nw
+cask "slack"
+
+## Productivity
 cask "alfred"
 cask "bartender"
-cask "charles"
-cask "dash"
-cask "discord"
-cask "docker"
-cask "fantastical"
-cask "finicky"
-cask "focus"
-cask "font-iosevka"
-cask "google-chrome"
-cask "iterm2"
-cask "mactex"
-cask "mysql-shell"
-cask "nextcloud"
-cask "oversight"
-cask "postman"
-cask "slack"
-cask "spotify"
-cask "stats"
-cask "temurin"
-cask "tla-plus-toolbox"
-cask "todoist"
-cask "virtualbox"
-cask "visual-studio-code"
-cask "vlc"
-cask "wireshark"
-cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Be Focused Pro", id: 961632517
-mas "Gifox", id: 1461845568
+cask "focus"
+cask "todoist"
+cask "fantastical"
+cask "finicky"
+
+## Font
+cask "font-iosevka"
+
+## Security
+cask "oversight"
 mas "Shush", id: 496437906
+
+## Music
+cask "spotify"
