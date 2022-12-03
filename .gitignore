@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+tmux/.config/tmux/plugins
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zsh_sessions

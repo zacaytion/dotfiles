@@ -1,0 +1,8 @@
+^/macOS
+^/wallpapers
+^/env
+^/bootstrap.sh
+
+^/zsh/zprezto
+^/zsh/\.config/\.zsh_history
+^/zsh/\.config/\.zsh_sessions
