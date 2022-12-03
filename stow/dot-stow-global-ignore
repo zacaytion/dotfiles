@@ -34,3 +34,6 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 ################################################################################
+
+\/.config/op/config\
+\/.config/asdf-direnv/zshrc\
