@@ -2,7 +2,7 @@
 	name = Zach Harris
   email = code@zharr.is
   username = zacaytion
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQMql5NajOzfS0A21tdgp7nGgDSyPFd7U5C9If+iXfk
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlazVeltmNOuMxxf046TxVQw/4nlU2zrHUCUUl6rzO8
 
 [init]
 	defaultBranch = main
@@ -38,6 +38,7 @@
 [commit]
   gpgsign = true
 
+
 ###########################################
 ######## Large File System ################
 
@@ -46,6 +47,7 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
 
 ###########################################
 ######## Credentials ######################
