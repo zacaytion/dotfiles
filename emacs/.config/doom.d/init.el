@@ -146,7 +146,7 @@
        (json +lsp +tree-sitter)
        ;;(java +lsp +tree-sitter)
        (javascript +tree-sitter +lsp)
-       ;;(julia +lsp +tree-sitter)
+       (julia +lsp +tree-sitter)
        ;;kotlin
        (latex +latexmk
               +lsp
@@ -168,7 +168,7 @@
             +present
             +roam2)
        ;;php
-       plantuml
+       ;;plantuml
        ;;purescript
        (python +lsp
 	       +tree-sitter
