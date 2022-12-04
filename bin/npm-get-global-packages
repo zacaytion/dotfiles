@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+## Outputs a pseudo package.json of global packages
+npm ls --json --global --depth 0 | jq '{ name: "global packages", dependencies: .dependencies | with_entries(.value = .value.version) }'
