@@ -53,9 +53,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
-  /usr/local/opt/{coreutils,findutils,gnu-sed,grep,make}/libexec/gnubin
-  /opt/homebrew/opt/asdf/bin
-  $HOME/{,s}bin(N)
+  $HOME/.local/bin
   $EMACSDIR/bin
   $path
 )
