@@ -1,3 +1,8 @@
 [submodule "zprezto"]
 	path = zsh/zprezto
-	url = git@github.com:sorin-ionescu/prezto.git
+	url = https://github.com/sorin-ionescu/prezto.git
+
+[submodule "writing/digestif"]
+	path = writing/digestif
+	url = https://github.com/astoff/digestif.git
+	branch = v0.5
