@@ -65,10 +65,7 @@
 
 
 ###########################################
-##### Personal Config Override  ###########
+##### Work Config Override  ###########
 
-[includeIf "gitdir:~/dotfiles/"]
-  path = ~/dotfiles/.gitconfig
-
-[includeIf "gitdir:~/Projects/personal"]
-  path = ~/Projects/personal/.gitconfig
+[includeIf "gitdir:~/Projects/work"]
+  path = ~/Projects/work/.gitconfig
