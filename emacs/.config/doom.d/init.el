@@ -99,6 +99,7 @@
        gist
        (lookup +dictionary +docsets)
        (lsp +elgot +peek)
+       (lsp +peek)
        (magit +forge)
        make
        ;;pass

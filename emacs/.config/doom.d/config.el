@@ -31,6 +31,16 @@
 (after! vertico
       (setq which-key-use-C-h-commands t))
 
+(after! dap-mode
+  (require 'dap-dlv-go) ;; Golang debuggin
+  (require 'dap-chrome) ;; Chrome JS Debugging
+  (require 'dap-node) ;; Node JS Debugging
+
+  ;; A workaround to correctly show breakpoints
+  ;; from: https://github.com/emacs-lsp/dap-mode/issues/374#issuecomment-1140399819
+  (add-hook! +dap-running-session-mode
+    (set-window-buffer nil (current-buffer))))
+
 (after! spell-fu
   (setq ispell-dictionary "en-custom")
   (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir)))
