@@ -64,6 +64,42 @@
         org-priority-highest ?A
         org-priority-lowest ?E)
 
+(use-package! org-modern
+:hook (org-mode . org-modern-mode)
+:config
+(setq
+org-modern-star '("◉" "○" "✸" "✿" "✤" "✜" "◆" "▶")
+org-modern-table-vertical 1
+org-modern-table-horizontal 0.2
+org-modern-list '((43 . "•")
+                    (45 . "–")
+                    (42 . "∘"))
+;; Edit settings
+org-auto-align-tags nil
+org-tags-column 0
+org-catch-invisible-edits 'show-and-error
+org-special-ctrl-a/e t
+org-insert-heading-respect-content t
+;; Appearance
+org-modern-todo nil
+org-modern-tag nil
+org-modern-timestamp t
+org-modern-statistics nil
+org-modern-progress nil
+org-modern-priority nil
+org-modern-horizontal-rule (make-string 36 ?─)
+org-modern-keyword "‣"
+))
+
+(after! spell-fu
+(cl-pushnew 'org-modern-tag (alist-get 'org-mode +spell-excluded-faces-alist)))
+
+(use-package! org-appear
+  :hook
+  (org-mode . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t))
+
 (setq  org-agenda-files '("~/org/cal"))
 (after! org-agenda
   (org-super-agenda-mode)
