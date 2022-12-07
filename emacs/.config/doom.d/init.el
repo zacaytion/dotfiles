@@ -34,11 +34,11 @@
        doom
        doom-dashboard
        doom-quit
-       (emoji +unicode)
+       (emoji +unicode +github)
        ;;fill-column
        hl-todo
        ;;hydra
-       ;;indent-guides
+       indent-guides
        ;;ligatures
        ;;minimap
        modeline
@@ -47,9 +47,9 @@
        ophints
        (popup +all +defaults)
        ;;tabs
-       treemacs
+       (treemacs +lsp)
        ;;unicode
-       vc-gutter
+       (vc-gutter +diff-hl)
        vi-tilde-fringe
        (window-select +numbers)
        workspaces
@@ -92,13 +92,12 @@
        ;;biblio            ; Writes a PhD for you (citation needed)
        (debugger +lsp)
        direnv
-       docker
+       (docker +lsp)
        editorconfig
        ;;ein
        (eval +overlay)
        gist
-       (lookup +dictionary +docsets)
-       (lsp +elgot +peek)
+       (lookup +dictionary +docsets +offline)
        (lsp +peek)
        (magit +forge)
        make
@@ -165,16 +164,15 @@
             +noter
             +pandoc
             +pomodoro
-            +pretty
             +present
             +roam2)
        ;;php
        ;;plantuml
        ;;purescript
-       (python +lsp
-	       +tree-sitter
+       (python +tree-sitter
                +pyright
-               +poetry)
+               +poetry
+               +lsp)
        ;;qt
        ;;racket
        ;;raku
