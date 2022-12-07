@@ -84,7 +84,7 @@
 
        :checkers
        syntax
-       ;; (spell +hunspell +everywhere)
+       (spell +aspell +everywhere)
        grammar
 
        :tools

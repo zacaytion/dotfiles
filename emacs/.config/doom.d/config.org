@@ -72,6 +72,13 @@ This is to prevent overflow of the modeline due to large icon size
 ** Tools
 *** LSP
 *** Tree-Sitter
+*** Spelling
+#+begin_src emacs-lisp
+(after! spell-fu
+  (setq ispell-dictionary "en-custom")
+  (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir)))
+#+end_src
+
 ** Lang
 *** Org
 #+begin_src emacs-lisp

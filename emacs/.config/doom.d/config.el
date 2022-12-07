@@ -31,6 +31,10 @@
 (after! vertico
       (setq which-key-use-C-h-commands t))
 
+(after! spell-fu
+  (setq ispell-dictionary "en-custom")
+  (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir)))
+
 (setq org-directory "~/org/"
       org-archive-location "~/org/archive/")
 (after! org
