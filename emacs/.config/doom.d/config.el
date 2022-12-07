@@ -91,3 +91,13 @@
 
 (setq org-roam-directory "~/org/roam"
       org-agenda-files '("~/org/cal"))
+
+(use-package! mermaid-mode
+  :commands mermaid-mode
+  :mode "\\.mmd\\'")
+
+(use-package! ob-mermaid
+  :after org
+  :init
+  (after! org
+    (add-to-list 'org-babel-load-languages '(mermaid . t))))

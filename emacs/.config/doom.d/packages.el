@@ -48,3 +48,8 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+(package! mermaid-mode :pin "a98a9e733b1da1e6a19e68c1db4367bf46283479")
+(package! ob-mermaid
+  :recipe (:host github
+           :repo "arnm/ob-mermaid")
+  :pin "b4ce25699e3ebff054f523375d1cf5a17bd0dbaf")

@@ -151,5 +151,16 @@ This is to prevent overflow of the modeline due to large icon size
 (setq org-roam-directory "~/org/roam"
       org-agenda-files '("~/org/cal"))
 #+end_src
+*** Mermaid
+#+begin_src emacs-lisp
+(use-package! mermaid-mode
+  :commands mermaid-mode
+  :mode "\\.mmd\\'")
 
+(use-package! ob-mermaid
+  :after org
+  :init
+  (after! org
+    (add-to-list 'org-babel-load-languages '(mermaid . t))))
+#+end_src
 ** App
