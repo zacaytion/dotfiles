@@ -23,6 +23,9 @@
 [diff]
 	colorMoved = zebra
 
+[diff "lisp"]
+  xfuncname = "^(\\(.*)$"
+
 [diff "org"]
   xfuncname = "^(\\*+ +.*)$"
 
