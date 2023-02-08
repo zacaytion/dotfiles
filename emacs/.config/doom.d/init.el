@@ -21,7 +21,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company +tng)
+       company
        ;;helm
        ;;ido
        ;;(ivy +fuzzy
