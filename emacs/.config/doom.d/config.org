@@ -87,8 +87,10 @@ This is to prevent overflow of the modeline due to large icon size
 *** Spelling
 #+begin_src emacs-lisp
 (after! spell-fu
+  (setq ispell-program-name "aspell")
   (setq ispell-dictionary "en-custom")
-  (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir)))
+  (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir))
+  (cl-pushnew 'org-modern-tag (alist-get 'org-mode +spell-excluded-faces-alist)))
 #+end_src
 
 ** Lang
@@ -142,7 +144,7 @@ org-modern-timestamp t
 ))
 
 (after! spell-fu
-  (cl-pushnew 'org-modern-tag (alist-get 'org-mode +spell-excluded-faces-alist)))
+  )
 #+end_src
 ***** Org Appear
 #+begin_src emacs-lisp
