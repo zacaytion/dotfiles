@@ -35,5 +35,5 @@ _darcs
 ^/COPYING
 ################################################################################
 
-\/.config/op/config\
-\/.config/asdf-direnv/zshrc\
+\.config/op/config
+\.config/asdf-direnv/zshrc

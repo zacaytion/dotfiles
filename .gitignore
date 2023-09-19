@@ -10,3 +10,7 @@ zsh/.config/zsh/.zsh_sessions
 
 postgres/.config/pg/psql_history
 postgres/.config/pg/pgpass
+
+zsh/.config/zsh/.zsh_history
+
+*/.local/state/*
