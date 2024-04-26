@@ -7,6 +7,7 @@ tmux/.config/tmux/plugins
 
 zsh/.local/state/zsh/history
 zsh/.config/zsh/.zsh_sessions
+zsh/.config/zsh/.zsh_history
 
 postgres/.config/pg/psql_history
 postgres/.config/pg/pgpass

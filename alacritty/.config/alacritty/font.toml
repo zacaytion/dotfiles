@@ -1,0 +1,26 @@
+[font]
+size = 20.0
+
+[font.bold]
+family = "Iosevka Nerd Font Mono"
+style = "Regular"
+
+[font.bold_italic]
+family = "Iosevka Nerd Font Mono"
+style = "Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Iosevka Nerd Font Mono"
+style = "Light Italic"
+
+[font.normal]
+family = "Iosevka Nerd Font Mono"
+style = "Light"
+
+[font.offset]
+x = 0
+y = 0
