@@ -1,9 +1,0 @@
-[submodule "prezto"]
-	path = config/prezto
-	url = https://github.com/zacaytion/prezto.git
-[submodule "shell/zsh/prezto"]
-	path = zsh/zsh.d/prezto
-	url = https://github.com/zacaytion/prezto.git
-[submodule "zprezto"]
-	path = config/zsh.d/zprezto
-	url = https://github.com/zacaytion/prezto.git

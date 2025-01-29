@@ -1,7 +1,0 @@
-\.git*
-*\.md
-^/dotfiles/zsh/env
-^dotfiles/zsh/env
-^/zsh/env
-^zsh/env
-^/env
