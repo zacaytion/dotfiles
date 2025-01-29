@@ -1,0 +1,103 @@
+#!/usr/bin/env sh
+
+# the scripting-addition must be loaded manually if
+# you are running yabai on macOS Big Sur. Uncomment
+# the following line to have the injection performed
+# when the config is executed during startup.
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+
+# Disabled until new release
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+
+# ===== Global Settings ==================================
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
+yabai -m config window_origin_display        default
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_shadow                on
+yabai -m config window_opacity               off
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config window_border                off
+yabai -m config window_border_width          6
+yabai -m config active_window_border_color   0xff775759
+yabai -m config normal_window_border_color   0xff555555
+yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+# ===== General Space Settings ==================================
+
+yabai -m config layout                       bsp
+yabai -m config top_padding                  10
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 10
+yabai -m config right_padding                10
+yabai -m config window_gap                   04
+
+
+# ===== Spaces Labels ==================================
+
+yabai -m space 1 --label "Alpha"
+yabai -m space 2 --label "Beta"
+yabai -m space 2 --label "Comms"
+yabai -m space 3 --label "Tools"
+yabai -m space 4 --label "Media"
+yabai -m space 5 --label "Social"
+yabai -m space 6 --label "Float"
+
+# ===== Spaces Config ==================================
+
+yabai -m config --space 6 layout float
+
+# Unmanaged
+yabai -m rule --add app="^System Preferences$"  manage=off border=off
+yabai -m rule --add app="^Fantastical$"         manage=off border=off
+yabai -m rule --add app="^Stats$"               manage=off border=off
+yabai -m rule --add app="^Activity Monitor$"    manage=off border=off
+yabai -m rule --add app="^Finder$"              manage=off border=off
+yabai -m rule --add app="^Maps$"                manage=off border=off
+yabai -m rule --add app="^1Password"            manage=off border=off
+yabai -m rule --add app="^Authy Desktop$"       manage=off border=off
+yabai -m rule --add app="^Zoom"                 manage=off border=off
+
+# Fullscreen
+yabai -m rule --add app="^Discord"              native-fullscreen=on
+yabai -m rule --add app="^Slack"                native-fullscreen=on
+yabai -m rule --add app="^Spotify"              native-fullscreen=on
+yabai -m rule --add app="^Todoist"              native-fullscreen=on
+
+# Beta
+yabai -m rule --add app="^Chrome"                space=2
+yabai -m rule --add app="^Preview"               space=2
+
+# Tools
+yabai -m rule --add app="Postman"               space=4
+yabai -m rule --add app="Terminal"              space=4
+
+# Media
+yabai -m rule --add app="Music"                 space=5
+yabai -m rule --add app="QuickTime Player"      space=5
+yabai -m rule --add app="VLC"                   space=5
+yabai -m rule --add app="Zotero"                space=5
+
+# Social
+# yabai -m rule --add app="Firefox"               space=6
+
+
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
+
+# Load and Execute Included Configs
+find "${XDG_CONFIG_HOME}/yabai/includes" -type f -perm +111 -exec {} \;
+
+echo "yabai configuration loaded.."

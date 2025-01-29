@@ -1,0 +1,7 @@
+command = /opt/homebrew/bin/fish --login --interactive
+shell-integration = fish
+shell-integration-features = sudo
+
+font-family = "Isoveka Comfy"
+font-size = 16.5
+

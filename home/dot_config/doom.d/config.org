@@ -1,0 +1,192 @@
+* System Settings
+
+** Disable Tangle On Save
+#+begin_src emacs-lisp
+(remove-hook 'org-mode-hook #'+literate-enable-recompile-h)
+#+end_src
+
+** User Info
+#+begin_src emacs-lisp
+(setq user-full-name "Zach Harris"
+      user-mail-address "z@zharr.is")
+#+end_src
+
+** Language
+#+begin_src emacs-lisp
+(setenv "LANG" "en_US")
+#+end_src
+
+** Undo
+#+begin_src emacs-lisp
+(setq undo-limit 80000000
+      evil-want-fine-undo t)
+#+end_src
+
+** Saving
+#+begin_src emacs-lisp
+(setq  auto-save-default t)
+#+end_src
+
+** Loading
+#+begin_src emacs-lisp
+(setq  load-prefer-newer t)
+#+end_src
+
+* Display
+
+** Theme
+#+begin_src emacs-lisp
+(setq doom-theme 'modus-vivendi)
+#+end_src
+
+** Fonts
+'Comfy' version of Iosevka provided by Protesilaos:https://git.sr.ht/~protesilaos/iosevka-comfy
+The optional ~doom-big-font~ variable is for changing the style of larger fonts.
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "Iosevka Comfy" :size 18)
+      doom-big-font (font-spec :family "Iosevka Comfy Wide Duo")
+      doom-serif-font (font-spec :family "Iosevka Comfy Motion" :size 18)
+      doom-variable-pitch-font (font-spec :family "Iosevka Comfy Motion Duo" :size 16))
+#+end_src
+
+This is to prevent overflow of the modeline due to large icon size
+#+begin_src emacs-lisp
+(setq all-the-icons-scale-factor 1.1)
+#+end_src
+
+** Editing
+#+begin_src emacs-lisp
+(setq display-line-numbers t
+      truncate-string-ellipsis "…")
+(setq-default tab-width 2
+              indent-tabs-mode nil)
+#+end_src
+
+** Search
+#+begin_src emacs-lisp
+(setq search-highlight t)
+#+end_src
+
+* Packages
+
+** Completion
+
+*** Vertico
+#+begin_src emacs-lisp
+(after! vertico
+      (setq which-key-use-C-h-commands t))
+#+end_src
+
+** UI
+
+** Editor
+
+** Term
+Use zsh for external processes
+#+begin_src emacs-lisp
+(setq shell-file-name (executable-find "zsh"))
+#+end_src
+
+Use fish for vterm
+#+begin_src emacs-lisp
+(setq-default vterm-shell "/opt/homebrew/bin/fish")
+(setq-default explicit-shell-file-name "/opt/homebrew/bin/fish")
+#+end_src
+
+** Checkers
+
+** Tools
+
+*** LSP
+
+*** Tree-Sitter
+
+*** Debugger
+#+begin_src emacs-lisp
+(after! dap-mode
+  (require 'dap-dlv-go) ;; Golang debuggin
+  (require 'dap-chrome) ;; Chrome JS Debugging
+  (require 'dap-node) ;; Node JS Debugging
+
+  ;; A workaround to correctly show breakpoints
+  ;; from: https://github.com/emacs-lsp/dap-mode/issues/374#issuecomment-1140399819
+  (add-hook! +dap-running-session-mode
+    (set-window-buffer nil (current-buffer))))
+#+end_src
+
+*** Spelling
+#+begin_src emacs-lisp
+(after! spell-fu
+  (setq ispell-program-name "aspell")
+  (setq ispell-dictionary "en-custom")
+  (setq ispell-personal-dictionary (expand-file-name ".ispell_personal" doom-private-dir))
+  (cl-pushnew 'org-modern-tag (alist-get 'org-mode +spell-excluded-faces-alist)))
+#+end_src
+
+** Lang
+
+*** Org
+#+begin_src emacs-lisp
+(setq org-directory "~/Code/org/"
+      org-archive-location "~Code/org/archive/")
+(after! org
+  (setq org-use-property-inheritance t
+        org-enforce-todo-dependencies t
+        org-enforce-todo-checkbox-dependencies t
+        org-log-done 'time
+        org-log-into-drawer t
+        org-list-allow-alphabetical t
+        org-export-in-background t
+        org-catch-invisible-edits 'smart
+        org-startup-indented nil
+        org-ellipsis " ▾ "
+        org-hide-leading-stars t
+        org-priority-highest ?A
+        org-priority-lowest ?E))
+#+end_src
+
+**** UI
+
+***** Org Modern
+#+begin_src emacs-lisp
+(use-package! org-modern
+  :hook (org-mode . org-modern-mode)
+  :config
+  (setq
+    org-modern-star '("◉" "○" "✸" "✿" "✤" "✜" "◆")
+    ;; org-modern-table-vertical 1
+    ;; org-modern-table-horizontal 0.2
+    org-modern-list '((43 . "•")
+                    (45 . "–")
+                    (42 . "∘"))
+    ;; Edit settings
+    ;; org-auto-align-tags nil
+    ;; org-tags-column 0
+    org-catch-invisible-edits 'show-and-error
+    org-special-ctrl-a/e t
+    org-insert-heading-respect-content t
+
+    ;; Appearance
+    org-modern-block-fringe t
+    org-modern-timestamp t
+    ;; org-modern-horizontal-rule (make-string 36 ?─)
+    ;; org-modern-keyword "‣"
+))
+#+end_src
+
+***** Mermaid JS
+Render mermaid files via mermaid-mode.
+#+begin_src emacs-lisp
+(use-package! mermaid-mode
+  :commands mermaid-mode
+  :mode "\\.mmd\\'")
+#+end_src
+
+Use ob-mermaid to render mermaid diagrams in org files.
+#+begin_src emacs-lisp
+(use-package! ob-mermaid
+  :after org
+  :init
+  (after! org
+    (add-to-list 'org-babel-load-languages '(mermaid . t))))
+#+end_src

@@ -1,0 +1,56 @@
+[user]
+  name = Zach Harris
+  email = code@zharr.is
+  username = zacaytion
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlazVeltmNOuMxxf046TxVQw/4nlU2zrHUCUUl6rzO8
+
+[init]
+  defaultBranch = main
+
+[color]
+  ui = auto
+
+[pull]
+  rebase = true
+
+[fetch]
+  prune = true
+
+###########################################
+##### Use SSH instead of HTTPS ############
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+###########################################
+##### Diff Displays #######################
+
+[diff]
+  colorMoved = zebra
+
+[diff "lisp"]
+  xfuncname = "^(\\(.*)$"
+
+[diff "org"]
+  xfuncname = "^(\\*+ +.*)$"
+
+###########################################
+##### Commit Signing with 1Password #######
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
+###########################################
+######## Large File System ################
+
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f

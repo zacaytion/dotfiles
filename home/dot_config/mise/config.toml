@@ -1,0 +1,62 @@
+[tools]
+# global tool versions go here
+
+bun = "latest"
+node = 'lts'
+"npm:stylelint" = "latest"
+"npm:js-beautify" = "latest"
+"npm:@mermaid-js/mermaid-cli" = "latest"
+
+python = '3.13'
+uv = "latest"
+"pipx:psf/black" = "latest"
+"pipx:pyflakes" = "latest"
+"pipx:isort" = "latest"
+"pipx:pipenv" = "latest"
+"pipx:pytest" = "latest"
+
+go = '1.23'
+"go:github.com/jessfraz/dockfmt" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/fatih/gomodifytags" = "latest"
+"go:github.com/cweill/gotests/..." = "latest"
+"go:github.com/x-motemen/gore/cmd/gore" = "latest"
+"go:github.com/mdempsky/gocode" = "latest"
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
+
+[settings]
+
+# config files with these prefixes will be trusted by default
+trusted_config_paths = []
+
+# set the timeout for http requests as duration string, see `MISE_HTTP_TIMEOUT`
+http_timeout = "30s"  
+
+# number of plugins or runtimes to install in parallel. The default is `4`.
+jobs = 4              
+
+not_found_auto_install = true 
+task_output = "prefix" 
+paranoid = false       
+
+# path to the shorthands file, see `MISE_SHORTHANDS_FILE`
+shorthands_file = '~/.config/mise/shorthands.toml' 
+
+# disable specific tools, generally used to turn off core tools
+# disable_tools = ['node']           
+
+# load env vars from a dotenv file, see `MISE_ENV_FILE`
+# env_file = '.env' 
+
+# enable experimental features
+experimental = true 
+
+
+go_default_packages_file = '~/.config/mise/default-go-packages'
+
+[settings.npm]
+bun = true
+
+# "_" is a special key for information you'd like to put into mise.toml that mise will never parse
+[_]
+# foo = "bar"
