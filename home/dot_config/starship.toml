@@ -3,23 +3,122 @@
 
 add_newline = true
 
-scan_timeout = 10
+palette = "dracula"
+
+scan_timeout = 15
+
+format = """
+$username\
+$hostname\
+$localip\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$hg_state\
+${custom.jj}\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$dart\
+$deno\
+$elixir\
+$erlang\
+$gleam\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$gradle\
+$lua\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$python\
+$raku\
+$rlang\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$typst\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$env_var\
+$mise\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$time\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character"""
+
+[cmd_duration]
+format = '\[[󱦟 $duration]($style)\]'
+style = "bold yellow"
 
 [character]
 success_symbol = "[λ](bold green)"
-error_symbol = "[⁊](bold red)"
+error_symbol = "[λ](bold red)"
+vimcmd_symbol =  "[⁊](bold cyan)"
+vimcmd_replace_one_symbol =  "[⁊](bold purple)"
+vimcmd_replace_symbol = "[⁊](bold purple)"
+vimcmd_visual_symbol = "[⁊](bold pink)"
+
+
 
 [git_branch]
 symbol = " "
+style = "bold pink"
+format = '(\[[$symbol$branch]($style)\])'
 
 [git_commit]
 tag_symbol = '  '
+format = '(\[[\($hash$tag\)]($style)\])'
+
+[git_metrics]
+format = '(\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\])'
+
+[git_state]
+format = '(\[[$state ($progress_current/$progress_total)]($style)\])'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bold red"
+
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold cyan"
+
 
 [package]
 symbol = "󰏗 "
+disabled = true
 
 [directory]
 read_only = " 󰌾"
+style = "bold green"
 
 
 
@@ -27,153 +126,179 @@ read_only = " 󰌾"
 
 [buf]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [cmake]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [gradle]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [meson]
 symbol = "󰔷 "
-format = "via [$symbol]($style)"
+disabled = true
 
 [nix_shell]
 symbol = " "
+disabled = true
 
 
 
 # Environments
 
-[aws]
-symbol = "  "
+[mise]
 disabled = true
+
+[aws]
+symbol = " "
+disabled = true
+style = "bold orange"
+
+[container]
+symbol = "󰏗 "
+style = "bold yellow"
 
 [docker_context]
 symbol = " "
+style = 'bold cyan'
 disabled = false
+
+[kubernetes]
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
 
 [gcloud]
 disabled = true
 
 [helm]
-format = 'via [$symbol]($style)'
+format = '(\[[$symbol($version)]($style)\])'
 
 [openstack]
 disabled = true
 
 [pulumi]
-format = 'via [$symbol$stack]($style)'
+format = '\[[$symbol$stack]($style)\]'
+
 
 
 # Languages
 
 [bun]
-format = "via [$symbol]($style)"
+symbol = " "
+format = '(\[[$symbol($version)]($style)\])'
 
 [c]
 symbol = " "
+format = '(\[[$symbol($version(-$name))]($style)\])'
+
+[cpp]
+symbol = " "
+format = '(\[[$symbol($version(-$name))]($style)\])'
 
 [conda]
 symbol = " "
-format = "via [$symbol]($style)"
+disabled = true
+
+[cobol]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
 disabled = true
 
 [dart]
-symbol = " "
-format = "via [$symbol]($style)"
 disabled = true
 
 [deno]
-format = "via [$symbol]($style)"
+symbol = "deno"
+format = '(\[[$symbol($version)]($style)\])'
 
 [elixir]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version \(OTP $otp_version\) )]($style)\])'
 
 [elm]
 symbol = " "
-format = "via [$symbol]($style)"
+disabled = true
 
 [gleam]
-format = 'via [$symbol]($style)'
+format = '(\[[$symbol($version)]($style)\])'
 
 [golang]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [haskell]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [java]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [julia]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [kotlin]
 symbol = " "
-format = "via [$symbol]($style)"
+disabled = true
 
 [lua]
 symbol = " "
-format = "via [$symbol]($style)"
+disabled = true
 
 [nim]
 symbol = "󰆥 "
-format = "via [$symbol]($style)"
 disabled = true
 
 [nodejs]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)]($style)\])'
 
 [ocaml]
 symbol = " "
-format = "via [$symbol]($style)"
+format = '(\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\])'
 disabled = true
 
 [perl]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [php]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [python]
 symbol = " "
-format = 'via [$symbol]($style)'
+format = '(\[[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)\])'
 
 [rlang]
 symbol = "󰟔 "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [ruby]
 symbol = " "
-format = 'via [$symbol]($style)'
+format = '(\[[$symbol($version )]($style)\])'
 
 [rust]
 symbol = "󱘗 "
-format = 'via [$symbol]($style)'
+format = '(\[[$symbol($version )]($style)\])'
 
 [scala]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [swift]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 [zig]
 symbol = " "
-format = 'via [$symbol]($style)'
+disabled = true
 
 
 # System Info
@@ -183,9 +308,20 @@ disabled = true
 
 [hostname]
 ssh_symbol = " "
+style = "bold purple"
 
 [memory_usage]
 symbol = "󰍛 "
+disabled = true
+
+[singularity]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[os]
+format = '\[[$symbol]($style)\]'
 
 [os.symbols]
 Alpaquita = " "
@@ -234,3 +370,29 @@ Unknown = " "
 Void = " "
 Windows = "󰍲 "
 
+
+
+# Jujitsu promt
+[custom.jj]
+command = "prompt"
+format = "$output"
+ignore_timeout = true
+shell = ["starship-jj", "--ignore-working-copy", "starship"]
+use_stdin = false
+when = true
+
+
+
+# Define Dracula color palette
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"

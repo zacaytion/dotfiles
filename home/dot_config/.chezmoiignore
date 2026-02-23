@@ -1,0 +1,4 @@
+claude/**
+!claude/settings.json
+doom.d/{config,custom}.el
+fish/fish_variables

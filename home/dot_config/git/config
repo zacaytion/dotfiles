@@ -27,12 +27,22 @@
 
 [diff]
   colorMoved = zebra
+  # external = difft
 
 [diff "lisp"]
   xfuncname = "^(\\(.*)$"
 
 [diff "org"]
   xfuncname = "^(\\*+ +.*)$"
+
+###########################################
+######## Merge Conflicts ##################
+
+[merge]
+	conflictStyle = diff3
+[merge "mergiraf"]
+	name = mergiraf
+	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 
 ###########################################
 ##### Commit Signing with 1Password #######
@@ -54,3 +64,7 @@
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
+[core]
+  hooksPath = /Users/z/.config/git/hooks
+
+

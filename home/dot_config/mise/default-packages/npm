@@ -1,0 +1,16 @@
+prettier
+stylelint
+js-beautify
+@mermaid-js/mermaid-cli
+markdownlint-cli
+@astrojs/language-server
+awk-language-server
+bash-language-server
+dockerfile-language-server-nodejs
+graphql-language-service-cli
+@mdx-js/language-server
+svelte-language-server
+sql-language-server
+typescript
+vscode-langservers-extracted
+yaml-language-server

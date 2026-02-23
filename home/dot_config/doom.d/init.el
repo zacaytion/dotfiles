@@ -13,11 +13,12 @@
        (emoji +unicode +github)  
        hl-todo           
        indent-guides     
-       ;;ligatures         
+       ligatures         
        modeline          
        nav-flash         
        ophints           
        (popup +all +defaults)
+       ;;smooth-scroll
        (treemacs +lsp)         
        ;;unicode           ; extended unicode support for various languages
        (vc-gutter +pretty) 
@@ -33,6 +34,7 @@
        multiple-cursors  
        rotate-text       
        snippets         
+       (whitespace +guess +trim)
        word-wrap       
 
        :emacs
@@ -56,13 +58,13 @@
        ;;biblio
        ;;collab
        (debugger +lsp)
-       direnv
+       ;;direnv
        (docker +lsp)
        editorconfig      
        (eval +overlay)
        (lookup +dictionary +docsets +offline)
        (lsp +peek)
-       (magit +forge)
+       (magit )
        make
        ;;pdf
        ;;(terraform +lsp)
@@ -75,6 +77,7 @@
        tty
 
        :lang
+       ;;(astro +lsp)
        ;;(cc +lsp +tree-sitter)
        ;;(clojure +lsp +tree-sitter)
        ;;common-lisp
@@ -118,12 +121,12 @@
        ;;(php +lsp +tree-sitter)
        ;;plantuml
        ;;purescript
-       (python +lsp +tree-sitter)
+       (python +lsp +tree-sitter +uv)
        ;;qt
        ;;(racket +lsp)
        ;;raku
        (rest +jq)
-       ;;rst
+       rst
        ;;(ruby +rails +lsp +tree-sitter)
        ;;(rust +lsp +tree-sitter)
        ;;(scala +lsp +tree-sitter)

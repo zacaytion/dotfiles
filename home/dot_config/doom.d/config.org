@@ -36,17 +36,14 @@
 
 ** Theme
 #+begin_src emacs-lisp
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'modus-vivendi-tinted)
 #+end_src
 
 ** Fonts
-'Comfy' version of Iosevka provided by Protesilaos:https://git.sr.ht/~protesilaos/iosevka-comfy
-The optional ~doom-big-font~ variable is for changing the style of larger fonts.
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Iosevka Comfy" :size 18)
-      doom-big-font (font-spec :family "Iosevka Comfy Wide Duo")
-      doom-serif-font (font-spec :family "Iosevka Comfy Motion" :size 18)
-      doom-variable-pitch-font (font-spec :family "Iosevka Comfy Motion Duo" :size 16))
+(setq doom-font (font-spec :family "Berkeley Mono" :size 17)
+      doom-serif-font (font-spec :family "Aporetic Serif Mono" :size 17)
+      doom-variable-pitch-font (font-spec :family "Symbols Nerd Font Mono" :size 17))
 #+end_src
 
 This is to prevent overflow of the modeline due to large icon size
@@ -97,10 +94,34 @@ Use fish for vterm
 
 ** Tools
 
+*** Magit
+
+#+begin_src emacs-lisp
+(setq magit-git-executable "/opt/homebrew/opt/git/bin/git")
+#+end_src
+
+*** Difftastic
+#+begin_src emacs-lisp
+ (use-package! difftastic
+  :commands (difftastic-magit-diff
+             difftastic-magit-show
+             difftastic-files
+             difftastic-buffers)
+  :config
+  (setq difftastic-executable (executable-find "difft")))
+#+end_src
+
 *** LSP
 
 *** Tree-Sitter
-
+#+begin_src emacs-lisp
+(use-package! treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+#+end_src
 *** Debugger
 #+begin_src emacs-lisp
 (after! dap-mode
@@ -124,6 +145,31 @@ Use fish for vterm
 #+end_src
 
 ** Lang
+*** Astro
+#+begin_src emacs-lisp
+;;(use-package! astro-ts-mode
+;;  :init
+;;    (add-hook 'astro-ts-mode-hook #'lsp! 'append)
+;;  :config
+;;  (let ((astro-recipe (make-treesit-auto-recipe
+;;                       :lang 'astro
+;;                       :ts-mode 'astro-ts-mode
+;;                       :url "https://github.com/virchau13/tree-sitter-astro"
+;;                       :revision "master"
+;;                       :source-dir "src")))
+;;    (add-to-list 'treesit-auto-recipe-list astro-recipe)))
+;;(set-formatter! 'prettier-astro
+;;  '("npx" "prettier" "--parser=astro"
+;;    (apheleia-formatters-indent "--use-tabs" "--tab-width" 'astro-ts-mode-indent-offset))
+;;  :modes '(astro-ts-mode))
+#+end_src
+
+*** Python
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'python
+  (set-formatter! 'ruff :modes '(python-mode python-ts-mode)))
+#+end_src
 
 *** Org
 #+begin_src emacs-lisp

@@ -1,7 +1,25 @@
-command = /opt/homebrew/bin/fish --login --interactive
-shell-integration = fish
-shell-integration-features = sudo
+command = /opt/homebrew/bin/fish
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
 
-font-family = "Isoveka Comfy"
-font-size = 16.5
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
 
+font-family = "Berkeley Mono"
+font-size = 17
+
+theme = Snazzy
+
+# Enable desktop notifications when commands finish in the background
+desktop-notifications = true
+
+# Visual bell for tab indicators
+window-decoration = true
+
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+
+
+clipboard-paste-protection = true
+copy-on-select = true
+
+auto-update-channel = tip

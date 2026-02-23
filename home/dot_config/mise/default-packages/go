@@ -1,0 +1,7 @@
+golang.org/x/tools/gopls
+github.com/jessfraz/dockfmt
+golang.org/x/tools/gopls
+github.com/fatih/gomodifytags
+github.com/x-motemen/gore/cmd/gore
+github.com/mdempsky/gocode
+github.com/go-delve/delve/cmd/dlv

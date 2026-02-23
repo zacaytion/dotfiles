@@ -6,3 +6,8 @@
 (package! ob-mermaid
   :recipe (:host github
            :repo "arnm/ob-mermaid"))
+(package! astro-ts-mode)
+
+(package! treesit-auto)
+
+(package! difftastic)

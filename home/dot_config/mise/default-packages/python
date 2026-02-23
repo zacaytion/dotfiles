@@ -1,0 +1,6 @@
+pyflakes
+isort
+pipenv
+pytest
+ruff
+ty

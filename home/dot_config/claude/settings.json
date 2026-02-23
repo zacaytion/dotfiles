@@ -1,0 +1,55 @@
+{
+  "cleanupPeriodDays": 7,
+  "env": {
+    "CLAUDE_CODE_SHELL": "fish",
+    "USE_BUILTIN_RIPGREP": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_AUTOUPDATER": "1"
+  },
+  "attribution": {
+    "commit": "\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Read(~/.zshenv)",
+      "Read($HOME/.config/mise/**)",
+      "Read($HOME/fish/config.fish)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./secrets/**)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_CONFIG_DIR/notify-on-stop.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "$CLAUDE_CONFIG_DIR/statusline.sh"
+  },
+  "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {},
+  "sandbox": {
+    "enabled": false,
+    "autoAllowBashIfSandboxed": false,
+    "allowUnsandboxedCommands": false
+  },
+  "autoUpdatesChannel": "stable"
+}

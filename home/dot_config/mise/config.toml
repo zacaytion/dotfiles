@@ -1,21 +1,36 @@
 [tools]
 # global tool versions go here
 
-bun = "latest"
-node = 'lts'
+node = "lts"
+"npm:prettier" = "latest"
 "npm:stylelint" = "latest"
 "npm:js-beautify" = "latest"
 "npm:@mermaid-js/mermaid-cli" = "latest"
+"npm:markdownlint-cli" = "latest"
+
+# LSP Servers
+"npm:@astrojs/language-server" = "latest"
+"npm:bash-language-server" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:graphql-language-service-cli" = "latest"
+"npm:svelte-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
 
 python = '3.13'
 uv = "latest"
-"pipx:psf/black" = "latest"
 "pipx:pyflakes" = "latest"
 "pipx:isort" = "latest"
 "pipx:pipenv" = "latest"
+"pipx:nose"  = "latest"
+"pipx:rstfmt" = "latest"
 "pipx:pytest" = "latest"
+"pipx:tiddl" = "latest"
+"pipx:ty" = "latest"
+"pipx:ruff" = "latest"
+"pipx:beets[embedart,fetchart]" = { version = "latest", uvx_args = "--with python3-discogs-client --with beets-alternatives --with beetcamp --with pylast --with requests --with git+https://github.com/geigerzaehler/beets-check.git@main --with standard-imghdr --with requests_oauthlib --with beets-beatport4" }
 
-go = '1.23'
+go = '1.25.3'
 "go:github.com/jessfraz/dockfmt" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:github.com/fatih/gomodifytags" = "latest"
@@ -24,7 +39,15 @@ go = '1.23'
 "go:github.com/mdempsky/gocode" = "latest"
 "go:github.com/go-delve/delve/cmd/dlv" = "latest"
 
+pnpm = "latest"
+golangci-lint = "v2.9.0"
+"pipx:git+https://github.com/oraios/serena.git" = "main"
+"cargo:starship-jj" = "latest"
+
 [settings]
+
+color_theme = 'charm'
+gpg_verify = true
 
 # config files with these prefixes will be trusted by default
 trusted_config_paths = []
@@ -52,10 +75,24 @@ shorthands_file = '~/.config/mise/shorthands.toml'
 experimental = true 
 
 
-go_default_packages_file = '~/.config/mise/default-go-packages'
+go_default_packages_file = '~/.config/mise/default-packages/go'
+
+[settings.node]
+compile = true
 
 [settings.npm]
-bun = true
+bun = false
+package_manager = 'pnpm'
+
+[settings.pipx]
+uvx = true
+
+[settings.python]
+default_packages_file = '~/.config/mise/default-packages/python' 
+
+[settings.ruby]
+compile = false
+
 
 # "_" is a special key for information you'd like to put into mise.toml that mise will never parse
 [_]
