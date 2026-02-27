@@ -1,0 +1,10 @@
+.codex-global-state.json
+.personality_migration
+archived_sessions
+auth.json
+sessions
+shell_snapshots
+sqlite
+state_5.sqlite
+tmp
+vendor_imports

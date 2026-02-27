@@ -1,7 +1,7 @@
 *
 !.*
 
-{{ if ne .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 !Library/LaunchAgents/local.emacs.daemon.plist
 !Library/LaunchAgents/org.freedesktop.xdg-environment-vars.plist
 {{ end }}
