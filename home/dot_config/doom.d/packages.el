@@ -11,3 +11,4 @@
 (package! treesit-auto)
 
 (package! difftastic)
+(package! go-template-mode)

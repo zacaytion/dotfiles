@@ -1,11 +1,19 @@
 [user]
   name = Zach Harris
-  email = code@zharr.is
+  email = {{ .email }}
+{{- if .work }}
+  username = zookla
+  signingkey = {{- onepasswordRead "op://Private/saff4jgvjc2oki2vmimetilbpm/public key" }}
+{{- else }}
   username = zacaytion
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlazVeltmNOuMxxf046TxVQw/4nlU2zrHUCUUl6rzO8
+  signingkey = {{- onepasswordRead "op://Private/kaeq3bmbwdjagmuvppx2hilbby/public key" }}
+{{- end }}
 
 [init]
   defaultBranch = main
+
+[core]
+  hooksPath = /Users/z/.config/git/hooks
 
 [color]
   ui = auto
@@ -64,7 +72,3 @@
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
-[core]
-  hooksPath = /Users/z/.config/git/hooks
-
-

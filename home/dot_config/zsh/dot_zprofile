@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# Ensure path arrays do not contain duplicates
+typeset -gU cdpath fpath mailpath path
+
+# Set path
+path=(
+    /opt/{homebrew,local}/{,s}bin(N)
+    /usr/local/{,s}bin(N)
+    $HOME/.local/bin
+    $EMACSDIR/bin
+    $path
+)

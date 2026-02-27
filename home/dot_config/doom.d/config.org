@@ -67,17 +67,13 @@ This is to prevent overflow of the modeline due to large icon size
 * Packages
 
 ** Completion
-
 *** Vertico
 #+begin_src emacs-lisp
 (after! vertico
-      (setq which-key-use-C-h-commands t))
+  (setq which-key-use-C-h-commands t))
 #+end_src
-
 ** UI
-
 ** Editor
-
 ** Term
 Use zsh for external processes
 #+begin_src emacs-lisp
@@ -93,16 +89,14 @@ Use fish for vterm
 ** Checkers
 
 ** Tools
-
 *** Magit
-
 #+begin_src emacs-lisp
 (setq magit-git-executable "/opt/homebrew/opt/git/bin/git")
 #+end_src
-
 *** Difftastic
 #+begin_src emacs-lisp
- (use-package! difftastic
+(use-package! difftastic
+  :defer t
   :commands (difftastic-magit-diff
              difftastic-magit-show
              difftastic-files
@@ -110,7 +104,6 @@ Use fish for vterm
   :config
   (setq difftastic-executable (executable-find "difft")))
 #+end_src
-
 *** LSP
 
 *** Tree-Sitter
@@ -164,13 +157,14 @@ Use fish for vterm
 ;;  :modes '(astro-ts-mode))
 #+end_src
 
-*** Python
-
+*** Go
 #+begin_src emacs-lisp
-(with-eval-after-load 'python
-  (set-formatter! 'ruff :modes '(python-mode python-ts-mode)))
+(use-package! go-template-mode
+  :defer t
+  :mode (("\\.gotmpl\\'" . go-template-mode)
+         ("\\.tpl\\'" . go-template-mode)
+         ("\\.tmpl\\'" . go-template-mode)))
 #+end_src
-
 *** Org
 #+begin_src emacs-lisp
 (setq org-directory "~/Code/org/"
@@ -199,25 +193,25 @@ Use fish for vterm
   :hook (org-mode . org-modern-mode)
   :config
   (setq
-    org-modern-star '("◉" "○" "✸" "✿" "✤" "✜" "◆")
-    ;; org-modern-table-vertical 1
-    ;; org-modern-table-horizontal 0.2
-    org-modern-list '((43 . "•")
-                    (45 . "–")
-                    (42 . "∘"))
-    ;; Edit settings
-    ;; org-auto-align-tags nil
-    ;; org-tags-column 0
-    org-catch-invisible-edits 'show-and-error
-    org-special-ctrl-a/e t
-    org-insert-heading-respect-content t
+   org-modern-star '("◉" "○" "✸" "✿" "✤" "✜" "◆")
+   ;; org-modern-table-vertical 1
+   ;; org-modern-table-horizontal 0.2
+   org-modern-list '((43 . "•")
+                     (45 . "–")
+                     (42 . "∘"))
+   ;; Edit settings
+   ;; org-auto-align-tags nil
+   ;; org-tags-column 0
+   org-catch-invisible-edits 'show-and-error
+   org-special-ctrl-a/e t
+   org-insert-heading-respect-content t
 
-    ;; Appearance
-    org-modern-block-fringe t
-    org-modern-timestamp t
-    ;; org-modern-horizontal-rule (make-string 36 ?─)
-    ;; org-modern-keyword "‣"
-))
+   ;; Appearance
+   org-modern-block-fringe t
+   org-modern-timestamp t
+   ;; org-modern-horizontal-rule (make-string 36 ?─)
+   ;; org-modern-keyword "‣"
+   ))
 #+end_src
 
 ***** Mermaid JS
@@ -235,4 +229,9 @@ Use ob-mermaid to render mermaid diagrams in org files.
   :init
   (after! org
     (add-to-list 'org-babel-load-languages '(mermaid . t))))
+#+end_src
+*** Python
+#+begin_src emacs-lisp
+(with-eval-after-load 'python
+  (set-formatter! 'ruff :modes '(python-mode python-ts-mode)))
 #+end_src

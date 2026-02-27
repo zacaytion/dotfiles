@@ -1,4 +1,6 @@
 *
 !settings.json
-!statusline.sh
-!notify-on-stop.sh
+!scripts/*
+!commands/*
+!CLAUDE.md
+!claude_desktop_config.json
